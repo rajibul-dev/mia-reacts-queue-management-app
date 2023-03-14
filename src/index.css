@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 body {
   font-family: "Inter", sans-serif;
 }
@@ -27,4 +37,19 @@ body {
   --create-sm-color: #9091a3;
 
   --drag-dots-color: rgb(255, 255, 255, 50%);
+
+  --primary-paragraph-size: 2rem;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
