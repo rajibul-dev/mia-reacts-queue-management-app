@@ -1,4 +1,14 @@
+/* Inter */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700;800;900&display=swap");
+
+/* Roboto */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500;600;700;800;900&display=swap");
+
+/* Lato */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@200;300;400;500;600;700;800;900&display=swap");
 
 * {
   margin: 0;
@@ -21,7 +31,7 @@ body {
   --password-cancel-btn-color: #7e7f8f;
 
   --primary-heading-color: #fff;
-  --primary-paragraph: #fff;
+  --primary-paragraph-color: #eee;
 
   --signature-color: #6066a8;
   --signature-color-light: #e7e9ff;
@@ -39,6 +49,7 @@ body {
   --drag-dots-color: rgb(255, 255, 255, 50%);
 
   --primary-paragraph-size: 2rem;
+  --bigger-paragraph-size: 2.4rem;
 }
 
 button {
@@ -52,4 +63,22 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+h1,
+p,
+button,
+link {
+  color: #fff;
+}
+
+@media (max-width: 68em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media (max-width: 64em) {
+  html {
+    font-size: 50%;
+  }
 }

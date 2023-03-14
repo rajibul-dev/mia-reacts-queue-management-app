@@ -1,0 +1,59 @@
+.Root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--initial-bg-color);
+  height: 100vh;
+  padding-bottom: 5vh; /* Adjust this value as needed */
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.Root h1 {
+  font-size: 4rem;
+  font-weight: 400;
+  margin-bottom: 4.4rem;
+  text-align: center;
+}
+.btn-flex-initial {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.Root button {
+  background-color: var(--initial-btn-color);
+  font-size: var(--primary-paragraph-size);
+  line-height: 1.5;
+  max-width: 34rem;
+  padding: 1.6rem 2rem;
+  color: var(--primary-paragraph-color);
+  border-radius: 4px;
+}
+.Root button:hover {
+  box-shadow: 0 0 0 2px var(--primary-paragraph-color);
+}
+
+/* media quiries */
+@media (max-width: 32em) {
+  .Root h1 {
+    font-size: 3.4rem;
+  }
+  .Root button {
+    font-size: 1.8rem;
+  }
+  .btn-flex-initial {
+    gap: 2rem;
+  }
+}
+@media (max-width: 29.5em) {
+  .btn-flex-initial {
+    flex-direction: column;
+  }
+  .Root h1 {
+    font-size: 2.8rem;
+    line-height: 1.4;
+  }
+  .Root {
+    padding-bottom: 0;
+  }
+}
