@@ -9,11 +9,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Root />} />
-      </Routes>
-      <Routes>
         <Route path="/viewer" element={<Viewer />} />
-      </Routes>
-      <Routes>
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>

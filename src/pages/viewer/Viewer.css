@@ -1,0 +1,8 @@
+.Viewer {
+  background-color: var(--signature-bg-color);
+  height: 100vh;
+}
+.Viewer h1 {
+  font-size: var(--h2-size);
+  font-weight: 600;
+}

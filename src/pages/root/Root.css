@@ -10,7 +10,7 @@
   padding-right: 5%;
 }
 .Root h1 {
-  font-size: 4rem;
+  font-size: var(--h1-size);
   font-weight: 400;
   margin-bottom: 4.4rem;
   text-align: center;
