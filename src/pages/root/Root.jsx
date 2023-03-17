@@ -13,11 +13,11 @@ export default function Root() {
 
         <Link to='/viewer'>
           <button>
-            I’m a viewer and I want to see the queue list
+            I’m a user and I want to see the queue list
           </button>
         </Link>
 
-        <Link to='/admin'>
+        <Link to='/verify'>
           <button>
             I’m Mia and I want to manage the queue for the stream
           </button>

@@ -1,8 +1,9 @@
 import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Admin from "./pages/admin/Admin";
+import Verify from "./pages/verify/Verify";
 import Root from "./pages/root/Root";
-import Viewer from "./pages/viewer/Viewer";
+import Viewer from "./pages/queue-viewer/Viewer";
+import ManageQueue from "./pages/queue-management/ManageQueue";
 
 export default function App() {
   return (
@@ -10,7 +11,8 @@ export default function App() {
       <Routes>
         <Route exact path="/" element={<Root />} />
         <Route path="/viewer" element={<Viewer />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/verify" element={<Verify />} />
+        <Route path="/manage-queue" element={<ManageQueue />} />
       </Routes>
     </BrowserRouter>
   )

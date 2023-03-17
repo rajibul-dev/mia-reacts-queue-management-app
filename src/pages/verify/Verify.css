@@ -1,0 +1,98 @@
+.Verify {
+  background-color: var(--initial-bg-color);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3vh; /* Adjust this value as needed */
+}
+@media (max-height: 20em) {
+  .Verify {
+    height: auto;
+    padding-top: 4.8rem;
+    padding-bottom: 4.8rem;
+  }
+}
+.Verify-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+}
+.Verify h1 {
+  font-size: var(--h1-size);
+  font-weight: 400;
+  margin-bottom: 1.1rem;
+}
+.Verify p.p {
+  font-size: var(--primary-paragraph-size);
+  color: var(--settings-secondary-line-color);
+  line-height: 1.6;
+  margin-bottom: 3.2rem;
+}
+.Verify .input-container {
+  margin-bottom: 1.8rem;
+  position: relative;
+}
+.Verify input {
+  width: 100%;
+  height: 6rem;
+  background-color: var(--password-input-bg-color);
+  border: none;
+  padding-left: 2.4rem;
+  padding-right: 8rem;
+  font-size: var(--primary-paragraph-size);
+  color: var(--accessability-white);
+}
+.Verify input::placeholder {
+  font-size: var(--primary-paragraph-size);
+  color: var(--password-placeholder-color);
+  font-weight: 400;
+}
+.Verify input:focus {
+  outline: none;
+  box-shadow: var(--btn-hover-small-border);
+}
+
+.Verify button {
+  font-size: var(--primary-paragraph-size);
+  margin-top: 1.8rem;
+  height: 6rem;
+}
+.two-btn {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+}
+.cancel-btn {
+  background-color: var(--password-cancel-btn-color);
+  width: 100%;
+}
+.submit-btn {
+  background-color: var(--signature-color);
+  width: 100%;
+}
+.eye-btn {
+  position: absolute;
+  left: 85%;
+  top: 50%;
+  transform: translateY(-48%);
+  display: inline-block;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background-color: transparent;
+  width: 3.6rem;
+  height: 3.6rem;
+}
+@media (max-width: 31.125em) {
+  .Verify {
+    padding-bottom: 0;
+  }
+}
+@media (max-width: 22.75em) {
+  .Verify-container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}

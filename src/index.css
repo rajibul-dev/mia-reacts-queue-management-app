@@ -30,9 +30,12 @@ body {
   --initial-btn-color: #565869;
 
   --password-cancel-btn-color: #7e7f8f;
+  --password-input-bg-color: #565869;
+  --password-placeholder-color: rgb(255, 255, 255, 60%);
 
   --primary-heading-color: #fff;
   --primary-paragraph-color: #eee;
+  --accessability-white: #fff;
 
   --signature-color: #6066a8;
   --signature-color-light: #e7e9ff;
@@ -50,10 +53,21 @@ body {
 
   --drag-dots-color: rgb(255, 255, 255, 50%);
 
+  --error-bg: rgb(210, 109, 109, 40%);
+  --error-border: 0 0 0 1.2px #eb7a7a;
+
+  --btn-hover-big-border: 0 0 0 2px var(--primary-paragraph-color);
+  --btn-hover-small-border: 0 0 0 0.7px var(--primary-paragraph-color);
+
   --primary-paragraph-size: 2rem;
+  --error-paragraph-size: 1.8rem;
   --bigger-paragraph-size: 2.4rem;
+  --smaller-paragraph-size: 1.8rem;
+  --smallest-paragraph-size: 1.6rem;
   --h1-size: 4rem;
   --h2-size: 3.4rem;
+
+  /* TODO: LINE HEIGHT VARIABLES */
 }
 
 button {
@@ -89,6 +103,15 @@ ol {
 .sm-container {
   max-width: 96rem;
 }
+
+.error {
+  font-size: var(--error-paragraph-size);
+  color: var(--primary-paragraph-color);
+  padding: 1.6rem;
+  background-color: var(--error-bg);
+  box-shadow: var(--error-border);
+}
+
 @media (max-width: 54.125em) {
   .sm-container {
     max-width: 90rem;
@@ -165,14 +188,14 @@ ol {
 .queue-list-in-both a {
   margin-left: auto;
   color: var(--primary-paragraph-color);
-  font-size: 1.6rem;
+  font-size: var(--smallest-paragraph-size);
   padding: 1.2rem 3rem;
   background-color: var(--video-link-btn-color);
   font-weight: 400;
   text-align: center;
 }
 .queue-list-in-both a:hover {
-  box-shadow: 0 0 0 0.7px var(--primary-paragraph-color);
+  box-shadow: var(--btn-hover-small-border);
 }
 @media (max-width: 54.125em) {
   .queue-list-in-both li {
