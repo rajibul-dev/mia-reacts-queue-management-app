@@ -123,14 +123,14 @@ ol {
   }
 }
 
-@media (max-width: 68em) {
+/* @media (max-width: 68em) {
   html {
     font-size: 56.25%;
   }
-}
+} */
 @media (max-width: 64em) {
   html {
-    font-size: 50%;
+    font-size: 53%;
   }
 }
 

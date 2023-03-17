@@ -5,11 +5,17 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 3vh; /* Adjust this value as needed */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
 }
 @media (max-height: 20em) {
   .Verify {
     height: auto;
-    padding-top: 4.8rem;
+    padding-top: 4rem;
     padding-bottom: 4.8rem;
   }
 }
@@ -84,11 +90,6 @@
   background-color: transparent;
   width: 3.6rem;
   height: 3.6rem;
-}
-@media (max-width: 31.125em) {
-  .Verify {
-    padding-bottom: 0;
-  }
 }
 @media (max-width: 22.75em) {
   .Verify-container {

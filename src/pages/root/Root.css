@@ -6,13 +6,20 @@
   background-color: var(--initial-bg-color);
   height: 100vh;
   padding-bottom: 8vh; /* Adjust this value as needed */
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 4%;
+  padding-right: 4%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
 }
 @media (max-height: 20em) {
   .Root {
+    overflow-y: auto;
     height: auto;
-    padding-top: 4.8rem;
+    padding-top: 4rem;
     padding-bottom: 4.8rem;
   }
 }
@@ -42,14 +49,11 @@
 
 /* media quiries */
 @media (max-width: 32em) {
-  .Root h1 {
-    font-size: 3.4rem;
-  }
-  .Root button {
-    font-size: 1.8rem;
-  }
   .btn-flex-initial {
     gap: 2rem;
+  }
+  .Root button {
+    max-width: 36rem;
   }
 }
 @media (max-width: 29.5em) {
@@ -57,10 +61,8 @@
     flex-direction: column;
   }
   .Root h1 {
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     line-height: 1.4;
-  }
-  .Root {
-    padding-bottom: 0;
+    margin-bottom: 3.6rem;
   }
 }

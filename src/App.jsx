@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Verify from "./pages/verify/Verify";
 import Root from "./pages/root/Root";
 import Viewer from "./pages/queue-viewer/Viewer";
-import ManageQueue from "./pages/queue-management/ManageQueue";
+import ManageQueue from "./pages/queueManagement/ManageQueue";
 
 export default function App() {
   return (
