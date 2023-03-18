@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 const dotenv = require('dotenv');
 dotenv.config()
 
@@ -16,6 +16,8 @@ export default function Verify() {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const history = useNavigate();
+  const location = useLocation();
+  const route = location.state.route;
 
   const handleCancel = () => {
     history("/");
@@ -25,7 +27,7 @@ export default function Verify() {
     event.preventDefault();
     if (password === adminPassword) {
       localStorage.setItem(adminPassword, true);
-      history("/manage-queue"); 
+      history(route); 
     } else {
       setErrorMessage("Incorrect password, please try again.");
     }
