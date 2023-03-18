@@ -26,7 +26,7 @@ export default function Viewer() {
     <>
       <Navbar />
       <div className="Viewer">
-        <div className="sm-container">
+        <div className="viewer-container sm-container">
           <h1>Mia Reacts Queue List</h1>
           {error && <p>{error}</p>}
           {queueList && <QueueListView queues={queueList} />}
