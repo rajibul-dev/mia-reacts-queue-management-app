@@ -69,6 +69,11 @@
   justify-content: space-between;
   gap: 4rem;
 }
+.cancel-btn,
+.submit-btn {
+  color: var(--primary-paragraph-color);
+  font-weight: 500;
+}
 .cancel-btn {
   background-color: var(--password-cancel-btn-color);
   width: 100%;
