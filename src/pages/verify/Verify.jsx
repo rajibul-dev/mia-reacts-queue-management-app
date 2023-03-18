@@ -24,7 +24,7 @@ export default function Verify() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password === adminPassword) {
-      localStorage.setItem("isAdmin", true);
+      localStorage.setItem(adminPassword, true);
       history("/manage-queue"); 
     } else {
       setErrorMessage("Incorrect password, please try again.");
