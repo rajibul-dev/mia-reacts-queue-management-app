@@ -6,6 +6,7 @@ import QueueListView from "../../components/QueueListView";
 
 // styles
 import "./Viewer.css";
+import Navbar from "../../components/Navbar";
 
 export default function Viewer() {
   const { documents, error } = useCollection("queueList");
@@ -22,12 +23,15 @@ export default function Viewer() {
   }, [documents]);
 
   return (
-    <div className="Viewer">
-      <div className="sm-container">
-        <h1>Mia Reacts Queue List</h1>
-        {error && <p>{error}</p>}
-        {queueList && <QueueListView queues={queueList} />}
+    <>
+      <Navbar />
+      <div className="Viewer">
+        <div className="sm-container">
+          <h1>Mia Reacts Queue List</h1>
+          {error && <p>{error}</p>}
+          {queueList && <QueueListView queues={queueList} />}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

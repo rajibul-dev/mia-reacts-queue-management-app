@@ -1,0 +1,49 @@
+.Navbar {
+  border-bottom: 1px solid var(--navbar-line-color);
+  padding: 1.4rem;
+}
+.sm-container.nav-container {
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 54.125em) {
+  .sm-container.nav-container {
+    max-width: 90rem;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+.Navbar button {
+  display: flex;
+  align-items: center;
+  background: none;
+  color: var(--signature-color-light);
+}
+.Navbar button span::after {
+  content: "Home";
+}
+.Navbar button span {
+  font-size: var(--smaller-paragraph-size);
+  font-weight: 400;
+}
+.back-icon-svg {
+  width: 4rem;
+  height: 4rem;
+  display: inline-block;
+}
+.Navbar ul {
+  display: flex;
+  transform: translateY(-2.9%);
+}
+.Navbar ul a {
+  font-size: var(--smaller-paragraph-size);
+  color: var(--signature-color-light);
+}
+@media (max-width: 44.25em) {
+  .Navbar button {
+    transform: translateX(-21%);
+  }
+}

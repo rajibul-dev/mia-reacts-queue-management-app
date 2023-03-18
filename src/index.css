@@ -23,6 +23,7 @@ html {
 body {
   font-family: "Inter", sans-serif;
   background-color: var(--signature-bg-color);
+  color: #fff;
 }
 
 :root {
@@ -47,6 +48,7 @@ body {
   --video-link-btn-color: rgb(255, 255, 255, 16%);
   --video-link-btn-color-hover: rgb(255, 255, 255, 10%);
   --settings-secondary-line-color: rgb(255, 255, 255, 70%);
+  --navbar-line-color: rgb(255, 255, 255, 50%);
 
   --select-menu-color: #707180;
   --create-sm-color: #9091a3;
@@ -81,15 +83,6 @@ ul {
 
 a {
   text-decoration: none;
-}
-
-h1,
-p,
-button,
-link,
-ul,
-ol {
-  color: #fff;
 }
 
 .bigr-container,
