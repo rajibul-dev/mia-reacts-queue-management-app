@@ -1,0 +1,33 @@
+.drag-btn {
+  position: absolute;
+  left: 0%;
+  z-index: 101;
+  background: none;
+  display: inline-block;
+  height: 100%;
+  width: 9rem;
+}
+.drag-icon {
+  transform: translateY(5%);
+}
+.QueueListManage.queue-list-in-both a::before {
+  content: "Open link";
+}
+.QueueListManage.queue-list-in-both a {
+}
+.edit-btn {
+  margin-left: 10rem;
+  transform: translateY(-6%);
+  background: none;
+  display: inline-block;
+}
+.edit-icon {
+  width: 4.8rem;
+  height: 4.8rem;
+}
+.QueueListManage.queue-list-in-both h2::before {
+  width: 20rem;
+}
+.QueueListManage.queue-list-in-both h2 {
+  margin-left: 5rem;
+}

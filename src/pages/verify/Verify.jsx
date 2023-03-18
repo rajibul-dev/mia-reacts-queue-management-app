@@ -18,9 +18,10 @@ export default function Verify() {
   const history = useNavigate();
   const location = useLocation();
   const route = location.state.route;
+  const cancelRoute = location.state.cancelRoute;
 
   const handleCancel = () => {
-    history("/");
+    history(cancelRoute);
   }
 
   const handleSubmit = (event) => {

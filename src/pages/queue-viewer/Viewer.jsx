@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
 
 // components
+import Navbar from "../../components/Navbar";
 import QueueListView from "../../components/QueueListView";
 
 // styles
 import "./Viewer.css";
-import Navbar from "../../components/Navbar";
 
 export default function Viewer() {
   const { documents, error } = useCollection("queueList");

@@ -27,8 +27,18 @@ export default function Navbar() {
           {pathname === '/viewer' && (
               <>
                 <li>
-                  <Link to='/verify' state= {{ route: '/manage-queue' }}>
+                  <Link to='/verify' state= {{ route: '/manage-queue', cancelRoute: '/viewer' }}>
                     Manage queue
+                  </Link> 
+                </li>
+              </>
+            )
+          }
+          {pathname === '/manage-queue' && (
+              <>
+                <li>
+                  <Link to='/viewer'>
+                    Go to view mode
                   </Link> 
                 </li>
               </>

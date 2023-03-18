@@ -1,13 +1,13 @@
 .Navbar {
   border-bottom: 1px solid var(--navbar-line-color);
-  padding: 1.4rem;
+  height: 6.9rem;
 }
 .sm-container.nav-container {
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
+  height: 100%;
 }
 @media (max-width: 54.125em) {
   .sm-container.nav-container {
@@ -20,6 +20,7 @@
   display: flex;
   align-items: center;
   background: none;
+  height: 100%;
   color: var(--signature-color-light);
 }
 .Navbar button span::after {
@@ -36,14 +37,18 @@
 }
 .Navbar ul {
   display: flex;
-  transform: translateY(-2.9%);
+  transform: translateY(-1%);
 }
 .Navbar ul a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   font-size: var(--smaller-paragraph-size);
   color: var(--signature-color-light);
 }
 @media (max-width: 44.25em) {
   .Navbar button {
-    transform: translateX(-21%);
+    transform: translateX(-7%);
   }
 }

@@ -17,9 +17,9 @@ export default function Root() {
           </button>
         </Link>
 
-        <Link to='/verify' state={{ route: '/manage-queue' }}>
+        <Link to='/verify' state={{ route: '/manage-queue', cancelRoute: '/' }}>
           <button>
-            I’m an admin and I want to manage the queue list
+            I’m Mia and I want to manage the queue list
           </button>
         </Link>
 

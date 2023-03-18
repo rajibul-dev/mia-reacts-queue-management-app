@@ -1,9 +1,28 @@
+/* ////////////////////////// */
+/* MAIN */
+/* ////////////////////////// */
+
+.Manager {
+  padding-bottom: 15rem;
+  padding-top: 0.4rem;
+}
+.manager-container {
+}
+.Manager h1 {
+  font-size: var(--h2-size);
+  font-weight: 600;
+  margin-bottom: 5.2rem;
+}
+
+/* ////////////////////////// */
+/* WHEN USER IS NOT VARIFIED */
+/* ////////////////////////// */
 .not-admin {
   display: flex;
   flex-direction: column;
   max-width: 58rem;
   margin: 0 auto;
-  padding-top: 18rem;
+  padding-top: 12rem;
   padding-bottom: 8rem;
   align-items: flex-start;
 }
