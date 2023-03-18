@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 
 // styles
 import './ManageQueue.css'
@@ -14,8 +15,21 @@ export default function ManageQueue() {
 
   return (
     <div>
-      {isAdmin && <h1>admin welcome!</h1>}
-      {!isAdmin && <h1>access denied</h1>}
+      {isAdmin && 
+        <h1>admin welcome!</h1>
+      }
+
+      {!isAdmin && 
+      <div className="not-admin">
+        <h1>You haven’t verified yourself</h1>
+        <p>Go to the verify page and verify yourself by submitting the correct password. If you’re Mia or someone who has permission, you know the password :)</p>
+        <Link to='/verify' state={{ route: '/manage-queue' }}>
+          <button className="submit-btn modify-btn">
+            Verify
+          </button>
+        </Link>
+      </div>
+      }
     </div>
   )
 }
