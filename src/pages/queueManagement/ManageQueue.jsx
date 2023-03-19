@@ -40,14 +40,9 @@ export default function ManageQueue() {
             <h1>Manage Queue List</h1>
             {error && <p>{error}</p>}
             {queueList && <QueueListManage queues={queueList} />}
+            {/* TODO: move to the next person button, and add button */}
           </div>
         }
-
-
-
-
-
-
 
         {!isAdmin && 
         <div className="not-admin">
