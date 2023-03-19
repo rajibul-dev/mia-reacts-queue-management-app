@@ -13,8 +13,8 @@
 .QueueListManage.queue-list-in-both a::before {
   content: "Open link";
 }
-.QueueListManage.queue-list-in-both a {
-}
+/* .QueueListManage.queue-list-in-both a {
+} */
 .edit-btn {
   margin-left: 10rem;
   transform: translateY(-6%);
@@ -30,4 +30,47 @@
 }
 .QueueListManage.queue-list-in-both h2 {
   margin-left: 5rem;
+}
+@media (max-width: 54.125em) {
+  .edit-btn {
+    margin-left: 5rem;
+  }
+  .QueueListManage.queue-list-in-both h2::before {
+    width: 18rem;
+  }
+  .QueueListManage.queue-list-in-both li p {
+    margin-left: 8rem;
+  }
+}
+@media (max-width: 31.25em) {
+  .edit-btn {
+    margin-left: auto;
+  }
+  .QueueListManage.queue-list-in-both h2::before {
+    width: 15.5rem;
+  }
+  .QueueListManage.queue-list-in-both .flex-name-n-btn {
+    transform: translateX(-8%);
+  }
+}
+@media (max-width: 25.625em) {
+  .drag-btn {
+    width: 7rem;
+    /* background-color: orangered; */
+  }
+  .QueueListManage.queue-list-in-both h2 {
+    margin-left: 4rem;
+  }
+  .QueueListManage.queue-list-in-both h2::before {
+    width: 14rem;
+  }
+  .QueueListManage.queue-list-in-both .flex-name-n-btn {
+    transform: translateX(-15%);
+  }
+  .QueueListManage.queue-list-in-both p {
+    padding-right: 0;
+  }
+  .QueueListManage.queue-list-in-both a {
+    padding: 1.2rem 2.4rem;
+  }
 }

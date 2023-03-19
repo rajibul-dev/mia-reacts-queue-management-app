@@ -177,7 +177,7 @@ a {
   line-height: 1.3;
 }
 .queue-list-in-both li:first-child p {
-  margin-left: 10.63rem;
+  transform: translateX(14%);
 }
 .queue-list-in-both a::before {
   content: "Open requested video";
@@ -201,6 +201,7 @@ a {
   }
   .queue-list-in-both p {
     margin-left: 10rem;
+    padding-right: 3rem;
   }
 }
 @media (max-width: 40.625em) {
@@ -209,6 +210,12 @@ a {
   }
 }
 @media (max-width: 31.25em) {
+  .queue-list-in-both li:first-child p {
+    transform: translateX(8%);
+  }
+  .queue-list-in-both li:first-child a {
+    transform: translateX(4.5%);
+  }
   .queue-list-in-both a {
     line-height: 1.2;
     margin-left: 8rem;
@@ -219,6 +226,7 @@ a {
   }
   .queue-list-in-both p {
     margin-left: 8rem;
+    padding-right: 0;
   }
   .queue-list-in-both li {
     padding-left: 3rem;
@@ -229,6 +237,13 @@ a {
     align-items: flex-start;
     width: fit-content;
     margin-left: 1rem;
+  }
+}
+@media (max-width: 21.125em) {
+  .Viewer h1,
+  .Manager h1 {
+    line-height: 1.4;
+    font-size: 3.2rem;
   }
 }
 /* ================ */
