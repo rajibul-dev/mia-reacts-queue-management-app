@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useFirestore } from "../hooks/useFirestore";
 
 // styles
 import "./QueueEditForm.css";
 
 export default function QueueEditForm({ queue, onClose }) {
+  const { error, updateDocument, deleteDocument } = useFirestore('queueList')
+
   const [inputValues, setInputValues] = useState({
     user: "",
     videoLink: "",
@@ -48,8 +51,18 @@ export default function QueueEditForm({ queue, onClose }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission here
+    updateDocument(queue.id, {
+      name: inputValues.user,
+      videoLink: inputValues.videoLink
+    })
+    onClose()
   };
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+    deleteDocument(queue.id)
+    onClose()
+  }
 
   return (
     <form className="q-edit-form" onSubmit={handleSubmit}>
@@ -93,13 +106,15 @@ export default function QueueEditForm({ queue, onClose }) {
         </label>
       </div>
 
-      <button className="remove">Remove</button>
+      <button className="remove" onClick={handleDelete}>Remove</button>
 
       <button className="cancel" onClick={(onClose)}>Cancel</button>
 
       <button type="submit" className="save">
         Save
       </button>
+
+      {error && <p className="error">{error}</p>}
     </form>
   );
 }
