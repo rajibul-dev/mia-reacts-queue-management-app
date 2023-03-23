@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { db } from "../firebase/config"
-import { collection, addDoc, doc, setDoc, deleteDoc, onSnapshot } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
 
 export const useFirestore = (col) => {
   const [error, setError] = useState(null)
