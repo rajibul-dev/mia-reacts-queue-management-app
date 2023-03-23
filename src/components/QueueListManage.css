@@ -42,7 +42,35 @@
     margin-left: 8rem;
   }
 }
-@media (max-width: 31.25em) {
+@media (max-width: 36.25em) {
+  .QueueListManage.queue-list-in-both .flex-name-n-btn {
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    margin-left: 1rem;
+  }
+  .QueueListManage.queue-list-in-both li:first-child p {
+    transform: translateX(8%);
+  }
+  .QueueListManage.queue-list-in-both li:first-child a {
+    transform: translateX(4.5%);
+  }
+  .QueueListManage.queue-list-in-both a {
+    line-height: 1.2;
+    margin-left: 8rem;
+    margin-top: 1.6rem;
+  }
+  .QueueListManage.queue-list-in-both h2::before {
+    width: 11rem;
+  }
+  .QueueListManage.queue-list-in-both p {
+    margin-left: 8rem;
+    padding-right: 0;
+  }
+  .QueueListManage.queue-list-in-both li {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
   .edit-btn {
     margin-left: auto;
   }

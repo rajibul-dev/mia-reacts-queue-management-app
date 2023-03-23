@@ -1,0 +1,167 @@
+.QueueListManage .editing h2 {
+  margin-left: 0;
+}
+.QueueListManage .editing h2::before {
+  width: 14rem;
+}
+.editing .q-edit-form {
+  display: grid;
+  margin-left: 9rem;
+  grid-template-columns: repeat(4, auto);
+  row-gap: 2.4rem;
+  column-gap: 2rem;
+  padding: 1.4rem 2rem;
+  padding-top: 3rem;
+  justify-items: center;
+}
+.editing .input-container:first-child,
+.editing .input-container:last-child {
+  grid-row: 1 / 2;
+}
+.editing .input-container:first-child {
+  grid-column: 1 / span 2;
+}
+.editing .input-container:nth-child(2) {
+  grid-column: 3 / span 2;
+}
+.editing .remove,
+.editing .cancel,
+.editing .save {
+  grid-row: 2 / 3;
+}
+.editing .remove::after {
+  content: " from the list";
+}
+.editing .remove {
+  grid-column: 1 / 3;
+  background-color: var(--delete-btn-color);
+}
+.editing .cancel {
+  grid-column: 3 / 4;
+  background-color: var(--video-link-btn-color);
+}
+.editing .save::after {
+  content: " changes";
+}
+.editing .save {
+  background-color: var(--signature-color);
+}
+.editing .input-container {
+  position: relative;
+  width: 100%;
+}
+.editing .input-container input,
+.editing .input-container label {
+  font-size: var(--primary-paragraph-size);
+  width: 100%;
+  height: 4rem;
+  transition: all 0.1s ease !important;
+}
+.editing .input-container input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--input-bottom-border-color);
+  outline: none;
+  color: var(--primary-paragraph-color);
+}
+.editing .input-container label {
+  display: flex;
+  align-items: center;
+  color: var(--input-bottom-border-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+/* .q-edit-form input:valid ~ label  */
+.floating-label {
+  font-size: 1.6rem !important;
+  transform: translateY(-68%) !important;
+  color: var(--signature-color-light) !important;
+}
+.q-edit-form button {
+  padding: 1.1rem 0;
+  font-size: var(--smaller-paragraph-size);
+  color: var(--primary-paragraph-color);
+  width: 100%;
+}
+.q-edit-form button:hover {
+  box-shadow: var(--btn-hover-small-border);
+}
+.q-edit-form .input-container:nth-child(2),
+.q-edit-form .cancel,
+.q-edit-form .save {
+  margin-left: calc(4vw + 1rem);
+}
+@media (max-width: 45em) {
+  .editing .remove::after {
+    content: "";
+  }
+  .q-edit-form button {
+    padding: 1.1rem 1.4rem;
+  }
+}
+@media (max-width: 38.75em) {
+  .QueueListManage .editing h2::before {
+    width: 11rem;
+  }
+  .editing .q-edit-form {
+    margin-left: 6rem;
+  }
+  .editing {
+    padding-right: 3rem;
+  }
+}
+@media (max-width: 36.375em) {
+  .q-edit-form .input-container:nth-child(2),
+  .q-edit-form .cancel,
+  .q-edit-form .save {
+    margin-left: 0;
+  }
+  .editing .q-edit-form {
+    grid-template-columns: repeat(3, 1fr);
+    width: 75%;
+  }
+  .editing .input-container {
+    grid-column: 1 / span 3 !important;
+  }
+  .editing .input-container:nth-child(2) {
+    margin-top: 2rem;
+  }
+  .editing .remove,
+  .editing .cancel,
+  .editing .save {
+    grid-row: 3;
+    margin-top: 0.4rem;
+    padding: 1.2rem 1.6rem;
+  }
+  .editing .remove {
+    grid-column: 1 / 2;
+  }
+  .editing .cancel {
+    grid-column: 2 / 3;
+  }
+  .editing .save {
+    grid-column: 3 / 4;
+  }
+  .editing .q-edit-form {
+    padding-right: 0;
+  }
+  .editing .save::after {
+    content: "";
+  }
+}
+@media (max-width: 28em) {
+  .QueueListManage .editing h2 {
+    display: none;
+  }
+  .editing .q-edit-form {
+    margin-left: 0;
+    padding-left: 0;
+    width: 100%;
+  }
+  .editing {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}

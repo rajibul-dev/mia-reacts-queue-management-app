@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useCollection } from "../../hooks/useCollection";
 
 // styles
+import '../../queue-list-in-both.css'
 import './ManageQueue.css'
 
 // components

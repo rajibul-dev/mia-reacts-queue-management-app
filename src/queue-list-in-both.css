@@ -1,0 +1,115 @@
+.flex-name-n-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.queue-list-in-both {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+}
+.queue-list-in-both li {
+  display: flex;
+  align-items: center;
+  padding: 2rem 5rem;
+  background-color: var(--list-box-color);
+  padding-right: 12rem;
+  position: relative;
+}
+.queue-list-in-both h2 {
+  font-size: 4.8rem;
+  z-index: 100;
+}
+
+.queue-list-in-both h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--rocket-color);
+  clip-path: polygon(0% 0%, 80% 0, 100% 50%, 80% 100%, 0% 100%);
+  height: 100%;
+  width: 14rem;
+  z-index: -1;
+}
+.queue-list-in-both li:first-child h2::before {
+  background-color: var(--signature-color);
+}
+.queue-list-in-both p {
+  font-size: 2.6rem;
+  font-weight: 500;
+  margin-left: 10rem;
+  line-height: 1.3;
+}
+.queue-list-in-both li:first-child p {
+  transform: translateX(14%);
+}
+.queue-list-in-both a::before {
+  content: "Open requested video";
+}
+.queue-list-in-both a {
+  margin-left: auto;
+  color: var(--primary-paragraph-color);
+  font-size: var(--smallest-paragraph-size);
+  padding: 1.2rem 3rem;
+  background-color: var(--video-link-btn-color);
+  font-weight: 400;
+  text-align: center;
+}
+.queue-list-in-both a:hover {
+  box-shadow: var(--btn-hover-small-border);
+}
+
+@media (max-width: 54.125em) {
+  .queue-list-in-both li {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  .queue-list-in-both p {
+    margin-left: 10rem;
+    padding-right: 3rem;
+  }
+}
+@media (max-width: 40.625em) {
+  .queue-list-in-both a::before {
+    content: "Open video";
+  }
+}
+@media (max-width: 31.25em) {
+  .queue-list-in-both li:first-child p {
+    transform: translateX(8%);
+  }
+  .queue-list-in-both li:first-child a {
+    transform: translateX(4.5%);
+  }
+  .queue-list-in-both a {
+    line-height: 1.2;
+    margin-left: 8rem;
+    margin-top: 1.6rem;
+  }
+  .queue-list-in-both h2::before {
+    width: 11rem;
+  }
+  .queue-list-in-both p {
+    margin-left: 8rem;
+    padding-right: 0;
+  }
+  .queue-list-in-both li {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .flex-name-n-btn {
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    margin-left: 1rem;
+  }
+}
+@media (max-width: 21.125em) {
+  .Viewer h1,
+  .Manager h1 {
+    line-height: 1.4;
+    font-size: 3.2rem;
+  }
+}

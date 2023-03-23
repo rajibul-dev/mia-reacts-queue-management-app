@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar";
 import QueueListView from "../../components/QueueListView";
 
 // styles
+import '../../queue-list-in-both.css'
 import "./Viewer.css";
 
 export default function Viewer() {
