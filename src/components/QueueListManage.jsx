@@ -1,23 +1,25 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
 // styles
-import "./QueueListManage.css";
+import "./QueueListManage.css"
 
 // components
-import DragIndicatorIcon from "../icons/draggable-indicator.svg";
-import EditIcon from "../icons/edit-btn-icon.svg";
-import QueueEditForm from "./QueueEditForm";
+import QueueEditForm from "./QueueEditForm"
+
+// icons
+import DragIndicatorIcon from "../icons/draggable-indicator.svg"
+import EditIcon from "../icons/edit-btn-icon.svg"
 
 export default function QueueListManage({ queues }) {
-  const [editingQueues, setEditingQueues] = useState([]);
+  const [editingQueues, setEditingQueues] = useState([])
 
   const handleEditBtnClick = (queueId) => {
-    setEditingQueues([...editingQueues, queueId]);
-  };
+    setEditingQueues([...editingQueues, queueId])
+  }
 
   const handleFormClose = (queueId) => {
-    setEditingQueues(editingQueues.filter((id) => id !== queueId));
-  };
+    setEditingQueues(editingQueues.filter((id) => id !== queueId))
+  }
 
   return (
     <ol className="queue-list-in-both QueueListManage">
@@ -62,5 +64,5 @@ export default function QueueListManage({ queues }) {
         </li>
       ))}
     </ol>
-  );
+  )
 }

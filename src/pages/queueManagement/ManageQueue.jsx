@@ -9,6 +9,7 @@ import './ManageQueue.css'
 // components
 import Navbar from "../../components/Navbar";
 import QueueListManage from "../../components/QueueListManage";
+import QAddManually from "../../components/QAddManually";
 
 const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
 
@@ -41,7 +42,7 @@ export default function ManageQueue() {
             <h1>Manage Queue List</h1>
             {error && <p>{error}</p>}
             {queueList && <QueueListManage queues={queueList} />}
-            {/* TODO: move to the next person button, and add button */}
+            <QAddManually queues={queueList} />
           </div>
         }
 
