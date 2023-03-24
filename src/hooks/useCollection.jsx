@@ -5,11 +5,15 @@ import { collection, onSnapshot } from "firebase/firestore";
 export const useCollection = (col) => {
   const [documents, setDocuments] = useState([])
   const [error, setError] = useState(null)
+  const [isPending, setIsPending] = useState(false)
 
   useEffect(() => {
 
     // set reference
     const ref = collection(db, col)
+
+    // set isPending state to true while fetching data
+    setIsPending(true)
 
     // realtime data
     const unsub = onSnapshot(ref, (snapshot) => {
@@ -23,11 +27,13 @@ export const useCollection = (col) => {
       // update state
       setDocuments(results)
       setError(null)
+      setIsPending(false)
     },
     
     (err) => {
       console.error(err)
       setError('Could not Fetch the data')
+      setIsPending(false)
     })
     
     // cleanup function
@@ -35,5 +41,5 @@ export const useCollection = (col) => {
 
   }, [col])
 
-  return { documents, error }
+  return { documents, error, isPending }
 }

@@ -1,0 +1,8 @@
+.EmptyQueue {
+  padding: 2.6rem 4rem;
+  background-color: var(--list-box-color);
+}
+.EmptyQueue p {
+  font-size: var(--bigger-paragraph-size);
+  font-weight: 400;
+}
