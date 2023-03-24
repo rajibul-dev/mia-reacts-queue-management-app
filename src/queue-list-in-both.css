@@ -110,3 +110,12 @@
     font-size: 3.2rem;
   }
 }
+section {
+  margin: 6.4rem 0;
+}
+section h2 {
+  font-size: var(--sectiono-h2);
+  color: var(--primary-heading-color);
+  font-weight: 500;
+  margin-bottom: 3.6rem;
+}
