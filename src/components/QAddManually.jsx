@@ -1,64 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import { AutoComplete, Input, Button } from 'antd';
-import { useFirestore } from '../hooks/useFirestore';
-import { useCollection } from '../hooks/useCollection';
+import React, { useState } from "react";
+import { useFirestore } from "../hooks/useFirestore";
 
 // styles
-import './QAddManually.css'
-
-const options = [
-  {label: "Ai Higuchi", value: "Ai Higuchi"},
-  {label: "Adini Love Tunes", value: "Adini Love Tunes"},
-  {label: "Raji", value: "Raji"},
-  {label: "Kapt", value: "Kapt"}
-]
+import "./QAddManually.css";
 
 export default function QAddManually({ queues }) {
-  const [videoLinkValue, setVideoLinkValue] = useState('')
-  const [userValue, setUserValue] = useState('')
-  const { error:firestoreError, addDocument } = useFirestore('queueList')
-  const { documents, error: readError } = useCollection("queueList");
-  const [queueList, setQueueList] = useState([]);
+  const [videoLink, setVideoLink] = useState("");
+  const [user, setUser] = useState("");
 
-  useEffect(() => {
-    setQueueList(documents)
-  }, [documents])
+  const { addDocument, error } = useFirestore("queueList");
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const onNumber = queueList.length + 1
-    console.log(videoLinkValue, userValue, onNumber)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const onNumber = queues.length + 1;
     addDocument({
-      name: userValue,
+      name: user,
       onNumber,
-      videoLink: videoLinkValue
-    })
-  }
+      videoLink,
+    });
+    setVideoLink("");
+    setUser("");
+  };
 
   return (
-    <section className='QAddManually'>
+    <section className="QAddManually">
       <h2>Add to queue list manually</h2>
-      <form onSubmit={handleSubmit} className='add-manually-form'>
-        <Input
-          className='video-link-input'
-          type="text" 
-          placeholder='Paste the video link here'
-          value={videoLinkValue}
-          onChange={(event) => setVideoLinkValue(event.target.value)}
+      <form onSubmit={handleSubmit} className="add-manually-form">
+        <input
+          className="video-link"
+          type="text"
+          placeholder="Paste the video link here"
+          onChange={(e) => setVideoLink(e.target.value)}
+          value={videoLink}
+          required
         />
-        <AutoComplete 
-          className='auto-complete-input'
-          placeholder="Select User ▼"
-          options={options}
-          onSelect={(value) => {
-            setUserValue(value)
-          }}
-          filterOption={true}
+
+        <input
+          className="user"
+          type="text"
+          placeholder="User Name"
+          onChange={(e) => setUser(e.target.value)}
+          value={user}
+          required
         />
-        <Button className='add-manually-btn' onClick={handleSubmit}>
-          Add to list
-        </Button>
+
+        <button type="submit">Add to list</button>
       </form>
     </section>
-  )
+  );
 }

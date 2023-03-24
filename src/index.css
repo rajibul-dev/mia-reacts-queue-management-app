@@ -31,6 +31,7 @@ body {
   --initial-btn-color: #565869;
 
   --password-cancel-btn-color: #7e7f8f;
+  --input-bg-on-queue-pages: #65677a;
   --password-input-bg-color: #565869;
   --password-placeholder-color: rgb(255, 255, 255, 60%);
 
@@ -59,10 +60,12 @@ body {
   --error-bg: rgb(210, 109, 109, 40%);
   --error-border: 0 0 0 1.2px #eb7a7a;
 
+  --signature-input-focus: 0 0 0 0.7px var(--signature-color-light);
   --btn-hover-big-border: 0 0 0 2px var(--primary-paragraph-color);
   --btn-hover-small-border: 0 0 0 0.7px var(--primary-paragraph-color);
 
   --input-bottom-border-color: rgb(255, 255, 255, 0.7);
+  --input-placeholder-color: rgb(255, 255, 255, 0.6);
 
   --primary-paragraph-size: 2rem;
   --error-paragraph-size: 1.8rem;

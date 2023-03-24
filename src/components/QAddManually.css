@@ -1,3 +1,58 @@
-.auto-complete-input {
-  width: 30rem;
+.add-manually-form {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.add-manually-form input {
+  border: 0;
+  background-color: var(--input-bg-on-queue-pages);
+}
+.add-manually-form input::placeholder {
+  font-weight: 200 !important;
+}
+.add-manually-form input,
+.add-manually-form input::placeholder,
+.add-manually-form button {
+  font-size: var(--primary-paragraph-size);
+}
+.add-manually-form input::placeholder {
+  color: var(--input-placeholder-color);
+  font-weight: 400;
+}
+.add-manually-form input:focus {
+  outline: none;
+  box-shadow: var(--btn-hover-small-border);
+}
+.add-manually-form button:hover {
+  box-shadow: var(--btn-hover-small-border);
+}
+.add-manually-form input,
+.add-manually-form button {
+  color: var(--accessability-white);
+  padding: 1.8rem 2.4rem;
+  font-weight: 400;
+}
+.add-manually-form button {
+  background-color: var(--signature-color);
+  padding-left: 4rem;
+  padding-right: 4rem;
+  font-weight: 500;
+}
+.video-link {
+  width: 44rem;
+}
+.user {
+  width: 20rem;
+}
+@media (max-width: 54.125em) {
+  .add-manually-form {
+    flex-direction: column;
+    align-items: start;
+  }
+  .add-manually-form input {
+    width: 100%;
+  }
+  .add-manually-form button {
+    margin-top: 1.2rem;
+  }
 }
