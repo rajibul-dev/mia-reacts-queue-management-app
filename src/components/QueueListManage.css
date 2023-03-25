@@ -102,3 +102,10 @@
     padding: 1.2rem 1.8rem;
   }
 }
+/* target the placeholder element */
+.QueueListManage [data-rbd-placeholder-context-id] {
+  /* set the background color to transparent */
+  background-color: transparent;
+}
+.QueueListManage li.dragging {
+}

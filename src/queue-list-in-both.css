@@ -7,7 +7,6 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 2.8rem;
 }
 .queue-list-in-both li {
   display: flex;
@@ -16,6 +15,7 @@
   background-color: var(--list-box-color);
   padding-right: 12rem;
   position: relative;
+  margin-bottom: 2.8rem;
 }
 .queue-list-in-both h2 {
   font-size: 4.8rem;
