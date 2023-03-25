@@ -61,7 +61,6 @@ export default function QueueListManage({ queues }) {
                     className={editingQueues.includes(queue.id) ? "editing" : null}
                     {...provided.draggableProps}
                     ref={provided.innerRef}
-                    {...provided.dragHandleProps}
                   >
                     {editingQueues.includes(queue.id) ? null : (
                       <button className="drag-btn">
@@ -73,7 +72,7 @@ export default function QueueListManage({ queues }) {
                       </button>
                     )}
                     
-                    <h2>{queue.onNumber}</h2>
+                    <h2 {...provided.dragHandleProps}>{queue.onNumber}</h2>
 
                     {editingQueues.includes(queue.id) ? (
                       <QueueEditForm

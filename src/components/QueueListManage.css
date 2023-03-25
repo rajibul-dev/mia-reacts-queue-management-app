@@ -6,6 +6,7 @@
   display: inline-block;
   height: 100%;
   width: 9rem;
+  pointer-events: none;
 }
 .drag-icon {
   transform: translateY(5%);
