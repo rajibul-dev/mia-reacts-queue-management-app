@@ -43,7 +43,7 @@ export default function ManageQueue() {
             <h1>Manage Queue List</h1>
             {error && <p>{error}</p>}
             {queueList && queueList.length !== 0 && !isPending ? (
-              <QueueListManage queues={queueList} />
+              <QueueListManage queues={queueList} isPending={isPending} />
             ) : null}
             {queueList && queueList.length === 0 && !isPending ? (
               <EmptyQueue />

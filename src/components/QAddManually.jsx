@@ -26,14 +26,6 @@ export default function QAddManually({ queues }) {
     <section className="QAddManually">
       <h2>Add to queue list manually</h2>
       <form onSubmit={handleSubmit} className="add-manually-form">
-        <input
-          className="video-link"
-          type="text"
-          placeholder="Paste the video link here"
-          onChange={(e) => setVideoLink(e.target.value)}
-          value={videoLink}
-          required
-        />
 
         <input
           className="user"
@@ -41,6 +33,15 @@ export default function QAddManually({ queues }) {
           placeholder="User Name"
           onChange={(e) => setUser(e.target.value)}
           value={user}
+          required
+        />
+
+        <input
+          className="video-link"
+          type="text"
+          placeholder="Paste the video link here"
+          onChange={(e) => setVideoLink(e.target.value)}
+          value={videoLink}
           required
         />
 

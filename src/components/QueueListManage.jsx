@@ -12,7 +12,7 @@ import QueueEditForm from "./QueueEditForm"
 import DragIndicatorIcon from "../icons/draggable-indicator.svg"
 import EditIcon from "../icons/edit-btn-icon.svg"
 
-export default function QueueListManage({ queues }) {
+export default function QueueListManage({ queues, isPending }) {
   const [editingQueues, setEditingQueues] = useState([])
   const [queueList, updateQueueList] = useState(queues)
 
@@ -34,26 +34,39 @@ export default function QueueListManage({ queues }) {
 
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
-
+  
     const items = Array.from(queueList);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
-
-    const cooked = []
+  
+    // Update the onNumber values based on the new order
+    const cooked = [];
     items.forEach((queue, i) => {
       cooked.push({
-        ...queue, onNumber: i + 1
-      })
-    })
-    updateQueueList(cooked);
-  }
+        ...queue,
+        onNumber: i + 1,
+      });
+    });
+  
+    // Remove any duplicates from the new list
+    const uniqueCooked = cooked.reduce((acc, curr) => {
+      if (!acc.some((queue) => queue.onNumber === curr.onNumber)) {
+        acc.push(curr);
+      }
+      return acc;
+    }, []);
+  
+    // Update the state with the new list
+    updateQueueList(uniqueCooked);
+  };
+  
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <Droppable droppableId="queues" direction="vertical">
         {(provided, snapshot) => (
           <ol className={`queue-list-in-both QueueListManage${snapshot.isDraggingOver ? " dragging" : ""}`} {...provided.droppableProps} ref={provided.innerRef} >
-            {queueList.map((queue, index) => (
+            {queues.map((queue, index) => (
               <Draggable key={queue.id} draggableId={queue.id} index={index} type='QUEUE_ITEM'>
                 {(provided) => (
                   <li
