@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
-import { useFirestore } from "../hooks/useFirestore"
+import { useFirestore } from "../../hooks/useFirestore"
 
 // styles
-import "./QueueListManage.css"
+import "./QListManage.css"
 
 // components
-import QueueEditForm from "./QueueEditForm"
+import QueueEditForm from "./QEditForm"
 
 // icons
-import DragIndicatorIcon from "../icons/draggable-indicator.svg"
-import EditIcon from "../icons/edit-btn-icon.svg"
+import DragIndicatorIcon from "../../icons/draggable-indicator.svg"
+import EditIcon from "../../icons/edit-btn-icon.svg"
 
 export default function QueueListManage({ queues, isPending }) {
   const [editingQueues, setEditingQueues] = useState([])

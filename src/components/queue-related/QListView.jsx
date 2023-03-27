@@ -1,7 +1,7 @@
 import React from "react"
 
 // styles
-import './QueueListView.css'
+import './QListView.css'
 
 export default function QueueListView({ queues }) {
   return (

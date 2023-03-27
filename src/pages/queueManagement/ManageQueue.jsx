@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { useCollection } from "../../hooks/useCollection";
 
 // styles
-import "../../queue-list-in-both.css";
+import "../../QGeneral.css";
 import "./ManageQueue.css";
 
 // components
 import Navbar from "../../components/Navbar";
-import QueueListManage from "../../components/QueueListManage";
-import QAddManually from "../../components/QAddManually";
-import EmptyQueue from "../../components/EmptyQueue";
+import QueueListManage from "../../components/queue-related/QListManage";
+import QAddManually from "../../components/queue-related/QAddManually";
+import EmptyQueue from "../../components/queue-related/EmptyQ";
 
 const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
 

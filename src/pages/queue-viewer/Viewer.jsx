@@ -3,11 +3,11 @@ import { useCollection } from "../../hooks/useCollection";
 
 // components
 import Navbar from "../../components/Navbar";
-import QueueListView from "../../components/QueueListView";
-import EmptyQueue from "../../components/EmptyQueue";
+import QueueListView from "../../components/queue-related/QListView";
+import EmptyQueue from "../../components/queue-related/EmptyQ";
 
 // styles
-import '../../queue-list-in-both.css'
+import '../../QGeneral.css'
 import "./Viewer.css";
 
 export default function Viewer() {

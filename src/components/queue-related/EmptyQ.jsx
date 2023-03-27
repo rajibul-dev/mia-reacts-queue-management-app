@@ -1,12 +1,12 @@
 import React from 'react'
 
 // styles
-import './EmptyQueue.css'
+import './EmptyQ.css'
 
-export default function QIsPending() {
+export default function EmptyQueue({}) {
   return (
     <div className='EmptyQueue'>
-      <p>Loading...</p>
+      <p>Queue is empty</p>
     </div>
   )
 }

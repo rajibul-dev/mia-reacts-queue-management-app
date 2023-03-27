@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useFirestore } from "../hooks/useFirestore";
+import { useFirestore } from "../../hooks/useFirestore";
 
 // styles
-import "./QueueEditForm.css";
+import "./QEditForm.css";
 
 export default function QueueEditForm({ queue, onClose }) {
   const { error, updateDocument, deleteDocument } = useFirestore('queueList')
