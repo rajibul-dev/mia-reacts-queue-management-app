@@ -6,6 +6,8 @@ import Viewer from "./pages/queue-viewer/Viewer";
 import ManageQueue from "./pages/queueManagement/ManageQueue";
 import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
+import ForgotPassword from "./pages/forgot-password/ForgotPassword";
+import ResetPassword from "./pages/reset-password/ResetPassword";
 const dotenv = require('dotenv');
 dotenv.config();
 const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
@@ -23,6 +25,8 @@ export default function App() {
         <Route path="/manage-queue" element={<ManageQueue />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   )
