@@ -4,6 +4,8 @@ import Verify from "./pages/verify/Verify";
 import Root from "./pages/root/Root";
 import Viewer from "./pages/queue-viewer/Viewer";
 import ManageQueue from "./pages/queueManagement/ManageQueue";
+import Signup from "./pages/signup/Signup";
+import Login from "./pages/login/Login";
 const dotenv = require('dotenv');
 dotenv.config();
 const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
@@ -19,6 +21,8 @@ export default function App() {
           element={!isAdmin ? <Verify /> : <Navigate to="/manage-queue" /> }
         />
         <Route path="/manage-queue" element={<ManageQueue />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   )
