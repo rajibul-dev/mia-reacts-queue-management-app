@@ -63,7 +63,7 @@ export default function Login() {
               className="submit-btn"
               type="submit"
             >
-              Submit
+              Login
             </button>
           </div>
 

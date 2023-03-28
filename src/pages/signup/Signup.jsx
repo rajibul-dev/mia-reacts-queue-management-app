@@ -8,15 +8,15 @@ import VisibilityOffIcon from '../../icons/visibility-off.svg';
 
 export default function Signup() {
   const [name, setName] = useState("")
-  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [confPass, setConfPass] = useState("")
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password);
+    console.log(name, email, password, confPass);
   }
 
   const toggleShowPassword = () => {
@@ -79,7 +79,7 @@ export default function Signup() {
               className="submit-btn"
               type="submit"
             >
-              Submit
+              Create account
             </button>
           </div>
 
