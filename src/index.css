@@ -41,6 +41,7 @@ body {
 
   --signature-color: #6066a8;
   --signature-color-light: #e7e9ff;
+  --forgot-password-color: #e7e9ff;
   --signature-bg-color: #4e4f61;
 
   --list-box-color: #65677a;
@@ -65,6 +66,7 @@ body {
   --btn-hover-small-border: 0 0 0 0.7px var(--primary-paragraph-color);
 
   --input-bottom-border-color: rgb(255, 255, 255, 0.7);
+  --already-account-color: rgb(255, 255, 255, 0.7);
   --input-placeholder-color: rgb(255, 255, 255, 0.6);
 
   --primary-paragraph-size: 2rem;
