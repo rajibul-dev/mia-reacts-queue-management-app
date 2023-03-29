@@ -13,7 +13,7 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { login } = useLogin()
+  const { login, error } = useLogin()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -57,6 +57,7 @@ export default function Login() {
           <Link to='/forgot-password' className="forgot-password">Forgot password?</Link>
 
           {errorMessage && <p className="error">{errorMessage}</p>}
+          {error && <p className="error">{error}</p>}
 
           <div className="two-btn">
             <button 
