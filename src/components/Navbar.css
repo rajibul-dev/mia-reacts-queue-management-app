@@ -52,3 +52,10 @@
     transform: translateX(-7%);
   }
 }
+.welcome-message {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: var(--smaller-paragraph-size);
+  color: var(--primary-paragraph-color);
+}
