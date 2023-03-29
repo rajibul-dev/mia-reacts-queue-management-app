@@ -8,26 +8,55 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import ForgotPassword from "./pages/forgot-password/ForgotPassword";
 import ResetPassword from "./pages/reset-password/ResetPassword";
+import { useAuthContext } from "./hooks/useAuthContext";
 const dotenv = require('dotenv');
 dotenv.config();
 const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
 const isAdmin = localStorage.getItem(adminPassword) === 'true';
 
 export default function App() {
+  const { user, authIsReady } = useAuthContext()
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Root />} />
-        <Route path="/viewer" element={<Viewer />} />
-        <Route path="/verify"
-          element={!isAdmin ? <Verify /> : <Navigate to="/manage-queue" /> }
-        />
-        <Route path="/manage-queue" element={<ManageQueue />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      {authIsReady && (
+        <BrowserRouter>
+          <Routes>
+            <Route 
+              exact
+              path="/"
+              element={user ? <Root /> : <Navigate to="/signup" />}
+            />
+            <Route 
+              path="/viewer"
+              element={user ? <Viewer /> : <Navigate to='/signup' />} />
+            <Route
+              path="/verify"
+              element={!isAdmin ? <Verify /> : <Navigate to="/manage-queue" /> }
+            />
+            <Route 
+              path="/manage-queue" 
+              element={user ? <ManageQueue /> : <Navigate to='/signup' />} 
+            />
+            <Route 
+              path="/signup" 
+              element={!user ? <Signup /> : <Navigate to='/' />}
+            />
+            <Route 
+              path="/login" 
+              element={!user ? <Login /> : <Navigate to='/' />} 
+            />
+            <Route 
+              path="/forgot-password" 
+              element={<ForgotPassword />} 
+            />
+            <Route 
+              path="/reset-password" 
+              element={<ResetPassword />} 
+            />
+          </Routes>
+        </BrowserRouter>
+      )}
+    </>
   )
 }
