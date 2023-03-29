@@ -60,6 +60,7 @@ body {
 
   --error-bg: rgb(210, 109, 109, 40%);
   --error-border: 0 0 0 1.2px #eb7a7a;
+  --autofill-border-color: 0 0 0 0.4px var(--signature-color-light) inset;
 
   --signature-input-focus: 0 0 0 0.7px var(--signature-color-light);
   --btn-hover-big-border: 0 0 0 2px var(--primary-paragraph-color);
@@ -128,4 +129,23 @@ a {
   html {
     font-size: 53%;
   }
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: var(--accessability-white);
+  -webkit-box-shadow: 0 0 0px 1000px var(--password-input-bg-color) inset;
+  transition: background-color 5000s ease-in-out 0s;
+  font-style: normal;
+  box-shadow: var(--autofill-border-color);
+  caret-color: var(--accessability-white);
 }

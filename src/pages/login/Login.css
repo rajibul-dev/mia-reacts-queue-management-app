@@ -22,7 +22,7 @@
 .login-container {
   display: flex;
   flex-direction: column;
-  max-width: 40rem;
+  width: 40rem;
 }
 .Login h1 {
   font-size: var(--h1-size);

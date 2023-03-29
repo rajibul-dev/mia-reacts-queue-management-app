@@ -130,3 +130,6 @@
   display: inline;
   font-size: var(--smaller-paragraph-size);
 }
+.Signup .error {
+  margin-top: 1rem;
+}

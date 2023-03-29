@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import { useSignup } from "../../hooks/useSignup";
 
 // styles
 import './Signup.css'
@@ -14,9 +15,15 @@ export default function Signup() {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const { signup, error, isPending } = useSignup()
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(name, email, password, confPass);
+    if (password === confPass) {
+      signup(email, password, name)
+    } else {
+      setErrorMessage('Please enter the password correctly in conform password field')
+    }
   }
 
   const toggleShowPassword = () => {
@@ -73,6 +80,7 @@ export default function Signup() {
           />
 
           {errorMessage && <p className="error">{errorMessage}</p>}
+          {error && <p className="error">{error}</p>}
 
           <div className="two-btn">
             <button 
