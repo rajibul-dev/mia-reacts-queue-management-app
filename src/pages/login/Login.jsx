@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import { useLogin } from "../../hooks/useLogin";
 
 // styles
 import './Login.css'
@@ -12,9 +13,11 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const { login } = useLogin()
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password);
+    login(email, password);
   }
 
   const toggleShowPassword = () => {
@@ -25,9 +28,6 @@ export default function Login() {
     <div className="Login">
       <div className="login-container">
         <h1>Login</h1>
-        {/* <p className="p">
-          We can’t let other people manage the queue list. That’s why you need to enter the valid password to verify yourself.
-        </p> */}
         <form onSubmit={handleSubmit}>
           <input
             className="not-password-input"
