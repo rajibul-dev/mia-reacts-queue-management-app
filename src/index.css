@@ -113,6 +113,7 @@ a {
   font-size: var(--error-paragraph-size);
   color: var(--primary-paragraph-color);
   padding: 1.6rem;
+  line-height: 1.5;
   background-color: var(--error-bg);
   box-shadow: var(--error-border);
 }

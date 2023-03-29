@@ -1,33 +1,29 @@
-import { useState, useEffect } from 'react'
-import { auth } from '../firebase/config'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-// import { useAuthContext } from './useAuthContext'
+import { useState } from 'react';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../firebase/config';
 
 export const useSignup = () => {
-  const [error, setError] = useState(null)
-  const [isPending, setIsPending] = useState(false)
-  // const [isCancelled, setIsCancelled] = useState(false)
-  // const { dispatch } = useAuthContext()
+  const [error, setError] = useState(null);
+  const [isPending, setIsPending] = useState(false);
 
   const signup = async (email, password, displayName) => {
-    setError(null)
+    setError(null);
+    setIsPending(true);
 
-    // signup
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((res) => {
-        res.user.updateProfile({
-          displayName: displayName
-        }).then(() => {
-          // TODO dispatch signup
-          console.log(`User signed up`, res.user);
-        }).catch((err) => {
-          setError(err.message)
-        });
-      })
-      .catch((err) => {
-        setError(err.message)
-      })
+    // Signup with email and password
+    try {
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Set the display name
+      await updateProfile(result.user, { displayName });
+
+      console.log(`User signed up with display name: ${displayName}`);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsPending(false);
     }
+  };
 
-  return { signup, error, isPending }
-}
+  return { signup, error, isPending };
+};
