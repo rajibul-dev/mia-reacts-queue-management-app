@@ -9,54 +9,70 @@ import Login from "./pages/login/Login";
 import ForgotPassword from "./pages/forgot-password/ForgotPassword";
 import ResetPassword from "./pages/reset-password/ResetPassword";
 import { useAuthContext } from "./hooks/useAuthContext";
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
-const isAdmin = localStorage.getItem(adminPassword) === 'true';
+const isAdmin = localStorage.getItem(adminPassword) === "true";
+const loggedInBefore = localStorage.getItem("logged-in-before") === "true";
 
 export default function App() {
-  const { user, authIsReady } = useAuthContext()
+  const { user, authIsReady } = useAuthContext();
+
+  user && localStorage.setItem("logged-in-before", true);
 
   return (
     <>
       {authIsReady && (
         <BrowserRouter>
           <Routes>
-            <Route 
+            <Route
               exact
               path="/"
-              element={user ? <Root /> : <Navigate to="/signup" />}
+              element={
+                user ? (
+                  <Root />
+                ) : (
+                  <Navigate to={`${loggedInBefore ? "/login" : "/signup"}`} />
+                )
+              }
             />
-            <Route 
+            <Route
               path="/viewer"
-              element={user ? <Viewer /> : <Navigate to='/signup' />} />
+              element={
+                user ? (
+                  <Viewer />
+                ) : (
+                  <Navigate to={`${loggedInBefore ? "/login" : "/signup"}`} />
+                )
+              }
+            />
             <Route
               path="/verify"
-              element={!isAdmin ? <Verify /> : <Navigate to="/manage-queue" /> }
+              element={!isAdmin ? <Verify /> : <Navigate to="/manage-queue" />}
             />
-            <Route 
-              path="/manage-queue" 
-              element={user ? <ManageQueue /> : <Navigate to='/signup' />} 
+            <Route
+              path="/manage-queue"
+              element={
+                user ? (
+                  <ManageQueue />
+                ) : (
+                  <Navigate to={`${loggedInBefore ? "/login" : "/signup"}`} />
+                )
+              }
             />
-            <Route 
-              path="/signup" 
-              element={!user ? <Signup /> : <Navigate to='/' />}
+            <Route
+              path="/signup"
+              element={!user ? <Signup /> : <Navigate to="/" />}
             />
-            <Route 
-              path="/login" 
-              element={!user ? <Login /> : <Navigate to='/' />} 
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to="/" />}
             />
-            <Route 
-              path="/forgot-password" 
-              element={<ForgotPassword />} 
-            />
-            <Route 
-              path="/reset-password" 
-              element={<ResetPassword />} 
-            />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
           </Routes>
         </BrowserRouter>
       )}
     </>
-  )
+  );
 }
