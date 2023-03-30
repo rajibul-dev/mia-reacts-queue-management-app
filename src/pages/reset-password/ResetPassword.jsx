@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import { useForgotPassword } from "../../hooks/useForgotPassword";
+import { useNavigate } from "react-router-dom"
 
 // styles
 import './ResetPassword.css'
@@ -11,9 +13,20 @@ export default function ResetPassword() {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const { resetPassword, error, isPending } = useForgotPassword()
+
+  const queryParams = new URLSearchParams(window.location.search);
+  const oobCode = queryParams.get('oobCode');
+  const history = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(password, confPass);
+    if (password === confPass) {
+      resetPassword(oobCode, password);
+      history('/login')
+    } else {
+      setErrorMessage('Please write the "conform password" correctly')
+    }
   }
 
   const toggleShowPassword = () => {
@@ -50,6 +63,7 @@ export default function ResetPassword() {
           />
 
           {errorMessage && <p className="error">{errorMessage}</p>}
+          {error && <p className="error">{error}</p>}
 
           <div className="two-btn">
             <button 

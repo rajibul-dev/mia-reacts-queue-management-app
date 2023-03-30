@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import { useForgotPassword } from "../../hooks/useForgotPassword";
 
 // styles
 import './ForgotPassword.css'
@@ -8,9 +9,11 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const { forgotPassword, error, isPending } = useForgotPassword()
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email);
+    forgotPassword(email);
   }
 
   return (
@@ -24,6 +27,7 @@ export default function ForgotPassword() {
           <input
             className="not-password-input"
             type='email'
+            name="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -32,6 +36,7 @@ export default function ForgotPassword() {
           />
 
           {errorMessage && <p className="error">{errorMessage}</p>}
+          {error && <p className="error">{error}</p>}
 
           <div className="two-btn">
             <button 
