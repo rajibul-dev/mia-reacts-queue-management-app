@@ -32,6 +32,7 @@ export default function Login() {
           <input
             className="not-password-input"
             type='email'
+            name="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -42,6 +43,7 @@ export default function Login() {
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

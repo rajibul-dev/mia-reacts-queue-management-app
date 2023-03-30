@@ -41,6 +41,7 @@ export default function Signup() {
           <input
             className="not-password-input"
             type='text'
+            name="name"
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -50,6 +51,7 @@ export default function Signup() {
           <input
             className="not-password-input"
             type='email'
+            name="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -59,6 +61,7 @@ export default function Signup() {
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -73,6 +76,7 @@ export default function Signup() {
           <input
             className="not-password-input conform-password"
             type='password'
+            name="conform-password"
             placeholder="Conform password"
             value={confPass}
             onChange={(e) => setConfPass(e.target.value)}
