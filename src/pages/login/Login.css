@@ -127,3 +127,7 @@
   display: inline;
   font-size: var(--smaller-paragraph-size);
 }
+.Login .error {
+  margin-top: 1.3rem;
+  margin-bottom: 0.6rem;
+}
