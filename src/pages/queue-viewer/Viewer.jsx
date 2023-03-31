@@ -5,6 +5,7 @@ import { useCollection } from "../../hooks/useCollection";
 import Navbar from "../../components/Navbar";
 import QueueListView from "../../components/queue-related/QListView";
 import EmptyQueue from "../../components/queue-related/EmptyQ";
+import QIsPending from "../../components/queue-related/QIsPending";
 
 // styles
 import '../../QGeneral.css'
@@ -31,6 +32,7 @@ export default function Viewer() {
         <div className="viewer-container sm-container">
           <h1>Mia Reacts Queue List</h1>
           {error && <p>{error}</p>}
+          {isPending && <QIsPending />}
           {queueList && queueList.length !== 0 && !isPending ? (
             <QueueListView queues={queueList} />
           ) : null}
