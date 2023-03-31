@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useForgotPassword } from "../../hooks/useForgotPassword";
 import { useNavigate } from "react-router-dom"
 
@@ -18,6 +18,12 @@ export default function ResetPassword() {
   const queryParams = new URLSearchParams(window.location.search);
   const oobCode = queryParams.get('oobCode');
   const history = useNavigate();
+
+  useEffect(() => {
+    if (!oobCode) {
+      history('/login')
+    }
+  }, [])
 
   const handleSubmit = (event) => {
     event.preventDefault();
