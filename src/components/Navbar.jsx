@@ -17,7 +17,7 @@ export default function Navbar() {
 
   const handleLogout = () => {
     logout()
-    history('/')
+    history('/login')
   }
 
   return (
