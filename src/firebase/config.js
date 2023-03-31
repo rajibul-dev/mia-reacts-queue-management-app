@@ -4,7 +4,7 @@ dotenv.config();
 // Import the functions you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth'
+import { getAuth, setPersistence, browserLocalPersistence } from 'firebase/auth'
 
 // Config object
 const firebaseConfig = {
@@ -21,5 +21,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth()
+setPersistence(auth, browserLocalPersistence);
 
 export { db, auth }
