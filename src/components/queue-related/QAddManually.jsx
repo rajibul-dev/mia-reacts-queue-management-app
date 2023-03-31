@@ -8,7 +8,7 @@ export default function QAddManually({ queues }) {
   const [videoLink, setVideoLink] = useState("");
   const [user, setUser] = useState("");
 
-  const { addDocument, error } = useFirestore("queueList");
+  const { addDocument, error, isPending } = useFirestore("queueList");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +45,12 @@ export default function QAddManually({ queues }) {
           required
         />
 
-        <button type="submit">Add to list</button>
+        <button
+          type="submit"
+          disabled={isPending}
+        >
+          Add to list
+        </button>
       </form>
     </section>
   );

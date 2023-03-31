@@ -20,6 +20,11 @@
 .queue-list-in-both h2 {
   font-size: 4.8rem;
   z-index: 100;
+  width: 2.8rem; /* set the desired width */
+  min-width: 2.8rem; /* set the desired width */
+  overflow: visible; /* hide any overflow */
+  text-overflow: ellipsis; /* show ellipsis (...) for any overflow */
+  white-space: nowrap; /* prevent the text from wrapping to the next line */
 }
 
 .queue-list-in-both h2::before {
@@ -42,9 +47,6 @@
   margin-left: 10rem;
   line-height: 1.4;
 }
-/* .queue-list-in-both li:first-child p {
-  transform: translateX(14%);
-} */
 .queue-list-in-both a::before {
   content: "Open requested video";
 }
@@ -77,9 +79,6 @@
   }
 }
 @media (max-width: 31.25em) {
-  .queue-list-in-both li:first-child a {
-    transform: translateX(4.5%);
-  }
   .queue-list-in-both a {
     line-height: 1.2;
     margin-left: 8rem;

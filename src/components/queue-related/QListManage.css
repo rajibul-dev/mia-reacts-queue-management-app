@@ -50,12 +50,6 @@
     width: fit-content;
     margin-left: 1rem;
   }
-  .QueueListManage.queue-list-in-both li:first-child p {
-    transform: translateX(8%);
-  }
-  .QueueListManage.queue-list-in-both li:first-child a {
-    transform: translateX(4.5%);
-  }
   .QueueListManage.queue-list-in-both a {
     line-height: 1.2;
     margin-left: 8rem;

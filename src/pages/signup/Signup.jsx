@@ -90,8 +90,9 @@ export default function Signup() {
             <button 
               className="submit-btn"
               type="submit"
+              disabled={isPending}
             >
-              Create account
+              {isPending ? 'Loading...' : 'Create account'}
             </button>
           </div>
 

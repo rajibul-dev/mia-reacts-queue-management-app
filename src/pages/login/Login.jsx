@@ -13,7 +13,7 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { login, error } = useLogin()
+  const { login, error, isPending } = useLogin()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -65,8 +65,9 @@ export default function Login() {
             <button 
               className="submit-btn"
               type="submit"
+              disabled={isPending}
             >
-              Login
+              {isPending ? 'Loading...' : 'Login'}
             </button>
           </div>
 

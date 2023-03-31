@@ -42,15 +42,20 @@ export default function QueueListManage({ queues, isPending }) {
     // Update the onNumber values based on the new order
     const cooked = [];
     items.forEach((queue, i) => {
+      const currentIndex = items.findIndex((item) => item.id === queue.id);
       cooked.push({
         ...queue,
-        onNumber: i + 1,
+        onNumber: currentIndex + 1,
       });
     });
   
     // Remove any duplicates from the new list
     const uniqueCooked = cooked.reduce((acc, curr) => {
-      if (!acc.some((queue) => queue.onNumber === curr.onNumber)) {
+      if (
+        !acc.some((queue) => {
+          return queue.id === curr.id;
+        })
+      ) {
         acc.push(curr);
       }
       return acc;
@@ -58,8 +63,7 @@ export default function QueueListManage({ queues, isPending }) {
   
     // Update the state with the new list
     updateQueueList(uniqueCooked);
-  };
-  
+  };  
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>

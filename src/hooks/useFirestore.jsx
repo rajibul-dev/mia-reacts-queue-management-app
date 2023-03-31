@@ -3,36 +3,46 @@ import { db } from "../firebase/config"
 import { collection, addDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
 
 export const useFirestore = (col) => {
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
+  const [isPending, setIsPending] = useState(false);
 
   const addDocument = async (data) => {
+    setIsPending(true);
     try {
-      await addDoc(collection(db, col), data)
+      await addDoc(collection(db, col), data);
     } catch (err) {
-      console.error(err)
-      setError('Could not add the document')
+      console.error(err);
+      setError('Could not add the document');
+    } finally {
+      setIsPending(false);
     }
-  }
+  };
 
   const updateDocument = async (id, data) => {
+    setIsPending(true);
     try {
-      const docRef = doc(db, col, id)
-      await setDoc(docRef, data, { merge: true })
+      const docRef = doc(db, col, id);
+      await setDoc(docRef, data, { merge: true });
     } catch (err) {
-      console.error(err)
-      setError('Could not update the document')
+      console.error(err);
+      setError('Could not update the document');
+    } finally {
+      setIsPending(false);
     }
-  }
+  };
 
   const deleteDocument = async (id) => {
+    setIsPending(true);
     try {
-      const docRef = doc(db, col, id)
-      await deleteDoc(docRef)
+      const docRef = doc(db, col, id);
+      await deleteDoc(docRef);
     } catch (err) {
-      console.error(err)
-      setError('Could not delete the document')
+      console.error(err);
+      setError('Could not delete the document');
+    } finally {
+      setIsPending(false);
     }
-  }
+  };
 
-  return { error, addDocument, updateDocument, deleteDocument }
-}
+  return { error, isPending, addDocument, updateDocument, deleteDocument };
+};
