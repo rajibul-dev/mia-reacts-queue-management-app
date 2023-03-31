@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Verify from "./pages/verify/Verify";
 import Root from "./pages/root/Root";
@@ -18,7 +18,11 @@ const loggedInBefore = localStorage.getItem("logged-in-before") === "true";
 export default function App() {
   const { user, authIsReady } = useAuthContext();
 
-  user && localStorage.setItem("logged-in-before", true);
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("logged-in-before", true);
+    }
+  }, [user]);
 
   return (
     <>
@@ -70,6 +74,7 @@ export default function App() {
             />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </BrowserRouter>
       )}

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useLogout } from '../hooks/useLogout'
 
@@ -13,6 +13,12 @@ export default function Navbar() {
 
   const { user } = useAuthContext()
   const { logout } = useLogout()
+  const history = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    history('/')
+  }
 
   return (
     <header className="Navbar">
@@ -39,7 +45,7 @@ export default function Navbar() {
               <>
                 <li>
                   {user ?
-                  <Link onClick={logout}>
+                  <Link onClick={handleLogout}>
                     Log out
                   </Link> 
                   :
