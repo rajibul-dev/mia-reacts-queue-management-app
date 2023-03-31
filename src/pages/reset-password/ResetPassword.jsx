@@ -13,7 +13,7 @@ export default function ResetPassword() {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { resetPassword, error, isPending } = useForgotPassword()
+  const { resetPassword, error, isPending, success } = useForgotPassword()
 
   const queryParams = new URLSearchParams(window.location.search);
   const oobCode = queryParams.get('oobCode');
@@ -28,8 +28,14 @@ export default function ResetPassword() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password === confPass) {
-      resetPassword(oobCode, password);
-      history('/login')
+      resetPassword(oobCode, password)
+      .then(() => {
+        setTimeout(() => {
+          history('/login')
+        }, 3000)
+      }).catch(err => {
+        console.log(err);
+      })
     } else {
       setErrorMessage('Please write the "conform password" correctly')
     }
@@ -70,13 +76,15 @@ export default function ResetPassword() {
 
           {errorMessage && <p className="error">{errorMessage}</p>}
           {error && <p className="error">{error}</p>}
+          {success && <p className="success">{success}</p>}
 
           <div className="two-btn">
             <button 
               className="submit-btn"
               type="submit"
+              disabled={isPending}
             >
-              Reset password
+              {isPending ? 'Loading...' : 'Reset password'}
             </button>
           </div>
         </form>

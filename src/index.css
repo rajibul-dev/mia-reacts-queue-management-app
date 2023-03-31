@@ -33,7 +33,7 @@ body {
   --password-cancel-btn-color: #7e7f8f;
   --input-bg-on-queue-pages: #65677a;
   --password-input-bg-color: #565869;
-  --password-placeholder-color: rgb(255, 255, 255, 60%);
+  --password-placeholder-color: rgb(255, 255, 255, 0.6);
 
   --primary-heading-color: #fff;
   --primary-paragraph-color: #eee;
@@ -48,18 +48,22 @@ body {
   --rocket-color: #5c5e73;
   --delete-btn-color: #d46363;
 
-  --video-link-btn-color: rgb(255, 255, 255, 16%);
-  --video-link-btn-color-hover: rgb(255, 255, 255, 10%);
-  --settings-secondary-line-color: rgb(255, 255, 255, 70%);
-  --navbar-line-color: rgb(255, 255, 255, 50%);
+  --video-link-btn-color: rgb(255, 255, 255, 0.16);
+  --video-link-btn-color-hover: rgb(255, 255, 255, 0.1);
+  --settings-secondary-line-color: rgb(255, 255, 255, 0.7);
+  --navbar-line-color: rgb(255, 255, 255, 0.5);
 
   --select-menu-color: #707180;
   --create-sm-color: #9091a3;
 
-  --drag-dots-color: rgb(255, 255, 255, 50%);
+  --drag-dots-color: rgb(255, 255, 255, 0.5);
 
-  --error-bg: rgb(210, 109, 109, 40%);
+  --error-bg: rgb(210, 109, 109, 0.4);
   --error-border: 0 0 0 1.2px #eb7a7a;
+
+  --success-bg: rgb(122, 235, 133, 0.35);
+  --success-border: 0 0 0 1.2px #7aeb85;
+
   --autofill-border-color: 0 0 0 0.4px var(--signature-color-light) inset;
 
   --signature-input-focus: 0 0 0 0.7px var(--signature-color-light);
@@ -109,6 +113,14 @@ a {
   max-width: 96rem;
 }
 
+.success {
+  font-size: var(--error-paragraph-size);
+  color: var(--primary-paragraph-color);
+  padding: 1.6rem;
+  line-height: 1.5;
+  background-color: var(--success-bg);
+  box-shadow: var(--success-border);
+}
 .error {
   font-size: var(--error-paragraph-size);
   color: var(--primary-paragraph-color);
@@ -149,4 +161,7 @@ select:-webkit-autofill:focus {
   font-style: normal;
   box-shadow: var(--autofill-border-color);
   caret-color: var(--accessability-white);
+}
+button[disabled] {
+  cursor: not-allowed !important;
 }

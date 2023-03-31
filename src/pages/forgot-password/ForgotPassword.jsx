@@ -9,7 +9,7 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { forgotPassword, error, isPending } = useForgotPassword()
+  const { forgotPassword, error, isPending, success } = useForgotPassword()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,13 +37,15 @@ export default function ForgotPassword() {
 
           {errorMessage && <p className="error">{errorMessage}</p>}
           {error && <p className="error">{error}</p>}
+          {success && <p className="success">{success}</p>}
 
           <div className="two-btn">
             <button 
               className="submit-btn"
               type="submit"
+              disabled={isPending}
             >
-              Get password recovery link
+              {isPending ? 'Loading...' : 'Get password recovery link'}
             </button>
           </div>
 
