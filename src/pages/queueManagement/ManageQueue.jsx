@@ -50,7 +50,7 @@ export default function ManageQueue() {
             {queueList && queueList.length === 0 && !isPending ? (
               <EmptyQueue />
             ) : null}
-            <QAddManually queues={queueList} />
+            {!isPending && <QAddManually queues={queueList} />}
           </div>
         )}
 
