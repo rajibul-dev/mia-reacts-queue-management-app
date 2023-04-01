@@ -1,0 +1,9 @@
+.UserJoinQ {
+  margin-top: -1rem !important;
+  margin-bottom: 4.8rem;
+}
+.UserJoinQ .add-manually-form {
+  display: flex;
+  gap: 2rem;
+  /* align-items: center; */
+}

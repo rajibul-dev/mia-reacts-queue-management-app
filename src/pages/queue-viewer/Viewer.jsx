@@ -6,9 +6,10 @@ import Navbar from "../../components/Navbar";
 import QueueListView from "../../components/queue-related/QListView";
 import EmptyQueue from "../../components/queue-related/EmptyQ";
 import QIsPending from "../../components/queue-related/QIsPending";
+import UserJoinQ from "../../components/queue-related/UserJoinQ";
 
 // styles
-import '../../QGeneral.css'
+import "../../QGeneral.css";
 import "./Viewer.css";
 
 export default function Viewer() {
@@ -18,9 +19,7 @@ export default function Viewer() {
   useEffect(() => {
     if (documents) {
       // Sort the queue list based on the onNumber property
-      const sortedList = documents.sort(
-        (a, b) => a.onNumber - b.onNumber
-      );
+      const sortedList = documents.sort((a, b) => a.onNumber - b.onNumber);
       setQueueList(sortedList);
     }
   }, [documents]);
@@ -33,6 +32,7 @@ export default function Viewer() {
           <h1>Mia Reacts Queue List</h1>
           {error && <p>{error}</p>}
           {isPending && <QIsPending />}
+          {!isPending && <UserJoinQ queues={queueList} />}
           {queueList && queueList.length !== 0 && !isPending ? (
             <QueueListView queues={queueList} />
           ) : null}

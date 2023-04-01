@@ -4,8 +4,8 @@ import { useFirestore } from "../../hooks/useFirestore";
 // styles
 import "./QEditForm.css";
 
-export default function QueueEditForm({ queue, onClose }) {
-  const { error, updateDocument, deleteDocument } = useFirestore('queueList')
+export default function QueueEditForm({ queue, queues, onClose }) {
+  const { error, updateDocument, deleteDocument } = useFirestore("queueList");
 
   const [inputValues, setInputValues] = useState({
     user: "",
@@ -15,10 +15,10 @@ export default function QueueEditForm({ queue, onClose }) {
   useEffect(() => {
     setInputValues({
       user: queue.name,
-      videoLink: queue.videoLink
-    })
-  }, [queue])
-  
+      videoLink: queue.videoLink,
+    });
+  }, [queue]);
+
   // Define a state variable to keep track of whether the inputs are focused
   const [inputFocus, setInputFocus] = useState({
     user: false,
@@ -53,16 +53,28 @@ export default function QueueEditForm({ queue, onClose }) {
     event.preventDefault();
     updateDocument(queue.id, {
       name: inputValues.user,
-      videoLink: inputValues.videoLink
-    })
-    onClose()
+      videoLink: inputValues.videoLink,
+    });
+    onClose();
   };
 
   const handleDelete = (event) => {
     event.preventDefault();
-    deleteDocument(queue.id)
-    onClose()
-  }
+
+    const onNumber = queue.onNumber;
+
+    deleteDocument(queue.id);
+    onClose();
+
+    queues.forEach((q) => {
+      if (q.onNumber > onNumber) {
+        updateDocument(q.id, {
+          ...q,
+          onNumber: q.onNumber - 1,
+        });
+      }
+    });
+  };
 
   return (
     <form className="q-edit-form" onSubmit={handleSubmit}>
@@ -106,9 +118,13 @@ export default function QueueEditForm({ queue, onClose }) {
         </label>
       </div>
 
-      <button className="remove" onClick={handleDelete}>Remove</button>
+      <button className="remove" onClick={handleDelete}>
+        Remove
+      </button>
 
-      <button className="cancel" onClick={(onClose)}>Cancel</button>
+      <button className="cancel" onClick={onClose}>
+        Cancel
+      </button>
 
       <button type="submit" className="save">
         Save

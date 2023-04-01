@@ -26,7 +26,6 @@ export default function QAddManually({ queues }) {
     <section className="QAddManually">
       <h2>Add to queue list manually</h2>
       <form onSubmit={handleSubmit} className="add-manually-form">
-
         <input
           className="user"
           type="text"
@@ -45,12 +44,10 @@ export default function QAddManually({ queues }) {
           required
         />
 
-        <button
-          type="submit"
-          disabled={isPending}
-        >
+        <button type="submit" disabled={isPending}>
           Add to list
         </button>
+        {error && <p className="error">{error}</p>}
       </form>
     </section>
   );

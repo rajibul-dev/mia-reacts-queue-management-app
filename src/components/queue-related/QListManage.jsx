@@ -1,44 +1,48 @@
-import React, { useEffect, useState } from "react"
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
-import { useFirestore } from "../../hooks/useFirestore"
+import React, { useEffect, useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { useFirestore } from "../../hooks/useFirestore";
 
 // styles
-import "./QListManage.css"
+import "./QListManage.css";
 
 // components
-import QueueEditForm from "./QEditForm"
+import QueueEditForm from "./QEditForm";
 
 // icons
-import DragIndicatorIcon from "../../icons/draggable-indicator.svg"
-import EditIcon from "../../icons/edit-btn-icon.svg"
+import DragIndicatorIcon from "../../icons/draggable-indicator.svg";
+import EditIcon from "../../icons/edit-btn-icon.svg";
 
 export default function QueueListManage({ queues, isPending }) {
-  const [editingQueues, setEditingQueues] = useState([])
-  const [queueList, updateQueueList] = useState(queues)
+  const [editingQueues, setEditingQueues] = useState([]);
+  const [queueList, updateQueueList] = useState(queues);
 
-  const {updateDocument, error} = useFirestore('queueList')
+  const { updateDocument, error } = useFirestore("queueList");
 
   const handleEditBtnClick = (queueId) => {
-    setEditingQueues([...editingQueues, queueId])
-  }
+    setEditingQueues([...editingQueues, queueId]);
+  };
 
   const handleFormClose = (queueId) => {
-    setEditingQueues(editingQueues.filter((id) => id !== queueId))
-  }
+    setEditingQueues(editingQueues.filter((id) => id !== queueId));
+  };
 
   useEffect(() => {
-    queueList.forEach(queue => {
-      updateDocument(queue.id, {...queue})
-    })
-  }, [queueList])
+    queueList.forEach((queue) => {
+      updateDocument(queue.id, { ...queue });
+    });
+  }, [queueList]);
+
+  useEffect(() => {
+    updateQueueList(queues);
+  }, [queues]);
 
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
-  
+
     const items = Array.from(queueList);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
-  
+
     // Update the onNumber values based on the new order
     const cooked = [];
     items.forEach((queue, i) => {
@@ -48,7 +52,7 @@ export default function QueueListManage({ queues, isPending }) {
         onNumber: currentIndex + 1,
       });
     });
-  
+
     // Remove any duplicates from the new list
     const uniqueCooked = cooked.reduce((acc, curr) => {
       if (
@@ -60,22 +64,35 @@ export default function QueueListManage({ queues, isPending }) {
       }
       return acc;
     }, []);
-  
+
     // Update the state with the new list
     updateQueueList(uniqueCooked);
-  };  
+  };
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <Droppable droppableId="queues" direction="vertical">
         {(provided, snapshot) => (
-          <ol className={`queue-list-in-both QueueListManage${snapshot.isDraggingOver ? " dragging" : ""}`} {...provided.droppableProps} ref={provided.innerRef} >
+          <ol
+            className={`queue-list-in-both QueueListManage${
+              snapshot.isDraggingOver ? " dragging" : ""
+            }`}
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
             {queues.map((queue, index) => (
-              <Draggable key={queue.id} draggableId={queue.id} index={index} type='QUEUE_ITEM'>
+              <Draggable
+                key={queue.id}
+                draggableId={queue.id}
+                index={index}
+                type="QUEUE_ITEM"
+              >
                 {(provided) => (
                   <li
                     key={queue.id}
-                    className={editingQueues.includes(queue.id) ? "editing" : null}
+                    className={
+                      editingQueues.includes(queue.id) ? "editing" : null
+                    }
                     {...provided.draggableProps}
                     ref={provided.innerRef}
                   >
@@ -88,12 +105,13 @@ export default function QueueListManage({ queues, isPending }) {
                         />
                       </button>
                     )}
-                    
+
                     <h2 {...provided.dragHandleProps}>{queue.onNumber}</h2>
 
                     {editingQueues.includes(queue.id) ? (
                       <QueueEditForm
                         queue={queue}
+                        queues={queues}
                         onClose={() => handleFormClose(queue.id)}
                       />
                     ) : (
@@ -121,5 +139,5 @@ export default function QueueListManage({ queues, isPending }) {
         )}
       </Droppable>
     </DragDropContext>
-  )
+  );
 }
