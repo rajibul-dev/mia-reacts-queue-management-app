@@ -11,6 +11,7 @@ import Navbar from "../../components/Navbar";
 import QueueListManage from "../../components/queue-related/QListManage";
 import QAddManually from "../../components/queue-related/QAddManually";
 import EmptyQueue from "../../components/queue-related/EmptyQ";
+import QIsPending from "../../components/queue-related/QIsPending";
 
 const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
 
@@ -42,6 +43,7 @@ export default function ManageQueue() {
           <div className="manager-container sm-container">
             <h1>Manage Queue List</h1>
             {error && <p>{error}</p>}
+            {isPending && <QIsPending />}
             {queueList && queueList.length !== 0 && !isPending ? (
               <QueueListManage queues={queueList} isPending={isPending} />
             ) : null}
