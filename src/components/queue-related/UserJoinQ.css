@@ -7,3 +7,9 @@
   gap: 2rem;
   /* align-items: center; */
 }
+.UserJoinQ .leave-q {
+  background-color: var(--delete-btn-color);
+}
+.UserJoinQ .edit-q {
+  background-color: var(--password-cancel-btn-color);
+}
