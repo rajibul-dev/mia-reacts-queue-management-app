@@ -39,7 +39,7 @@ export default function QAddManually({ queues }) {
 
         <input
           className="video-link"
-          type="text"
+          type="url"
           placeholder="Paste the video link here"
           onChange={(e) => setVideoLink(e.target.value)}
           value={videoLink}

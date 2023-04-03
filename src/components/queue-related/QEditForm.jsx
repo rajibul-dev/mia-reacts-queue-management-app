@@ -100,7 +100,7 @@ export default function QueueEditForm({ queue, queues, onClose }) {
       <div className="input-container">
         <input
           id="videoLink"
-          type="text"
+          type="url"
           onChange={handleInputChange}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}

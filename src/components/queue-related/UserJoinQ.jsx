@@ -92,7 +92,7 @@ export default function UserJoinQ({ queues }) {
         <form className="add-manually-form" onSubmit={handleSubmit}>
           <input
             className="video-link"
-            type="text"
+            type="url"
             placeholder="Paste the video link here"
             onChange={(e) => setVideoLink(e.target.value)}
             value={videoLink}
@@ -114,7 +114,7 @@ export default function UserJoinQ({ queues }) {
         <form className="add-manually-form userEdit" onSubmit={handleEditSubmit}>
           <input
             className="video-link"
-            type="text"
+            type="url"
             placeholder="Paste the video link here"
             onChange={(e) => setVideoLink(e.target.value)}
             value={videoLink}
