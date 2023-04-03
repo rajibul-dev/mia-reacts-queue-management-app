@@ -1,0 +1,37 @@
+.ResetSession h2 {
+  margin-bottom: 1.4rem;
+}
+.ResetSession p {
+  font-size: var(--primary-paragraph-size);
+  line-height: 1.6;
+  color: var(--settings-secondary-line-color);
+  max-width: 58rem;
+  margin-bottom: 3.4rem;
+}
+.reset-btn-flex {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+.reset-btn-flex button {
+  padding: 2rem 2rem;
+  width: 100%;
+  font-weight: 500;
+  font-size: var(--primary-paragraph-size);
+  color: var(--accessability-white);
+}
+.reset-btn-flex button:hover {
+  box-shadow: var(--btn-hover-small-border);
+}
+.not-keep {
+  background-color: var(--delete-btn-color);
+}
+.keep {
+  background-color: var(--password-cancel-btn-color);
+}
+
+@media (max-width: 39em) {
+  .reset-btn-flex {
+    flex-direction: column;
+  }
+}

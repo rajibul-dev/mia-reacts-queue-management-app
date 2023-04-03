@@ -12,6 +12,7 @@ import QueueListManage from "../../components/queue-related/QListManage";
 import QAddManually from "../../components/queue-related/QAddManually";
 import EmptyQueue from "../../components/queue-related/EmptyQ";
 import QIsPending from "../../components/queue-related/QIsPending";
+import ResetSession from "../../components/queue-related/ResetSession";
 
 const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
 
@@ -51,6 +52,7 @@ export default function ManageQueue() {
               <EmptyQueue />
             ) : null}
             {!isPending && <QAddManually queues={queueList} />}
+            {!isPending && <ResetSession queues={queueList} />}
           </div>
         )}
 
