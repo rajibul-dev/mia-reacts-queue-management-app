@@ -13,3 +13,27 @@
 .UserJoinQ .edit-q {
   background-color: var(--password-cancel-btn-color);
 }
+.UserJoinQ .user-action-btns {
+  flex-direction: row !important;
+}
+.UserJoinQ .user-action-btns button {
+  margin-top: 0 !important;
+}
+.userEdit .cancel {
+  background-color: var(--password-cancel-btn-color);
+}
+.UserJoinQ .two-btn-flex {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 27em) {
+  .UserJoinQ .user-action-btns button {
+    font-size: var(--smaller-paragraph-size) !important;
+    padding-right: 6%;
+    padding-left: 6%;
+  }
+  .UserJoinQ .user-action-btns {
+    margin-top: 5rem;
+  }
+}

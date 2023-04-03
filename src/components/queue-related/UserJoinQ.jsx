@@ -3,15 +3,25 @@ import { useFirestore } from "../../hooks/useFirestore";
 import { useAddDocumentWithCustomID } from "../../hooks/useAddDocumentWithCustomID";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useDocument } from "../../hooks/useDocument";
+// import { useCollection } from '../../hooks/useCollection'
 
 import "./UserJoinQ.css";
 
 export default function UserJoinQ({ queues }) {
   const [videoLink, setVideoLink] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedVideoLink, setEditedVideoLink] = useState("");
   const { user } = useAuthContext();
 
+  // const {
+  //   document: qListCol,
+  //   error: qListErr,
+  //   isPending: qListReadIsPending
+  // } = useCollection('queueList')
   const {
     addDocument: addQListDocument,
+    deleteDocument: delQListDoc,
+    updateDocument: updateQListDoc,
     error: qListAdderr,
     isPending: qListIsPending,
   } = useFirestore("queueList");
@@ -33,15 +43,52 @@ export default function UserJoinQ({ queues }) {
       videoLink,
       uid: user.uid,
     });
-    setVideoLink("");
     statAddQListDocument(user.uid, {
       canJoin: false,
     });
   };
+  
+  const handleLeave = () => {
+    setVideoLink("");
+    queues.forEach(q => {
+      if (q.uid && q.uid === user.uid) {
+        delQListDoc(q.id)
+      }
+      statAddQListDocument(user.uid, {
+        canJoin: true,
+      });
+    })
+  };
+
+  const handleEditing = () => {
+    setIsEditing(true);
+    queues.forEach(q => {
+      if (q.uid && q.uid === user.uid) {
+        setVideoLink(q.videoLink)
+      }
+    })
+  }
+
+  const handleEditCancel = (e) => {
+    e.preventDefault();
+    setIsEditing(false)
+  }
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    queues.forEach(q => {
+      if (q.uid && q.uid === user.uid) {
+        updateQListDoc(q.id, {
+          ...q, videoLink
+        })
+      }
+    })
+    setIsEditing(false)
+  }
 
   return (
     <section className="UserJoinQ QAddManually">
-      {document && document.canJoin && (
+      {document && document.canJoin && !isEditing && (
         <form className="add-manually-form" onSubmit={handleSubmit}>
           <input
             className="video-link"
@@ -57,11 +104,30 @@ export default function UserJoinQ({ queues }) {
           {qListAdderr && <p className="error">{qListAdderr}</p>}
         </form>
       )}
-      {document && !document.canJoin && (
-        <div className="add-manually-form">
-          <button className="leave-q">Leave queue</button>
-          <button className="edit-q">Edit requested link</button>
+      {document && !document.canJoin && !isEditing && (
+        <div className="add-manually-form user-action-btns" >
+          <button className="leave-q" onClick={handleLeave}>Leave queue</button>
+          <button className="edit-q" onClick={handleEditing}>Edit requested link</button>
         </div>
+      )}
+      {isEditing && (
+        <form className="add-manually-form userEdit" onSubmit={handleEditSubmit}>
+          <input
+            className="video-link"
+            type="text"
+            placeholder="Paste the video link here"
+            onChange={(e) => setVideoLink(e.target.value)}
+            value={videoLink}
+            disabled={qListIsPending}
+            required
+          />
+
+          <div className="two-btn-flex">
+            <button className="cancel" onClick={handleEditCancel}>Cancel</button>
+            <button type="submit">Save changes</button>
+          </div>
+          {qListAdderr && <p className="error">{qListAdderr}</p>}
+        </form>
       )}
     </section>
   );
