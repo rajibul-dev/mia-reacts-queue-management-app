@@ -13,6 +13,7 @@ import QAddManually from "../../components/queue-related/QAddManually";
 import EmptyQueue from "../../components/queue-related/EmptyQ";
 import QIsPending from "../../components/queue-related/QIsPending";
 import ResetSession from "../../components/queue-related/ResetSession";
+import MiasActionButtons from "../../components/q-related-but-deserve-new-folder/MiasActionButtons";
 
 const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
 
@@ -45,6 +46,7 @@ export default function ManageQueue() {
             <h1>Manage Queue List</h1>
             {error && <p>{error}</p>}
             {isPending && <QIsPending />}
+            {/* {!isPending && queueList.length !== 0 && <MiasActionButtons queues={queueList} />} */}
             {queueList && queueList.length !== 0 && !isPending ? (
               <QueueListManage queues={queueList} isPending={isPending} />
             ) : null}
