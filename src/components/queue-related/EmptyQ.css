@@ -6,3 +6,6 @@
   font-size: var(--bigger-paragraph-size);
   font-weight: 400;
 }
+.EmptyQueue.mar-bottom-more {
+  margin-bottom: 2.8rem;
+}
