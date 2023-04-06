@@ -7,6 +7,9 @@
 .error.err-margin {
   margin-bottom: 3.6rem;
 }
+.success.err-margin {
+  margin-bottom: 3.6rem;
+}
 .btn-with-text-flex {
   display: flex;
   flex-direction: column;
@@ -31,21 +34,25 @@
   color: var(--settings-secondary-line-color);
   line-height: 1.6;
 }
-.play-n-grab {
+/* .play-n-grab {
 }
 .move-n-del {
-}
+} */
 .play-n-grab button {
   background-color: var(--signature-color);
 }
 .move-n-del button {
   background-color: var(--password-cancel-btn-color);
 }
-.play-icon {
-}
 @media (max-width: 38.375em) {
   .MiasActionButtons {
     flex-direction: column;
     gap: 2rem;
   }
+}
+
+/* .play-icon {
+} */
+.redo-icon {
+  height: 4rem;
 }

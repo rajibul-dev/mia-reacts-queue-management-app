@@ -117,7 +117,7 @@ a {
 .success {
   font-size: var(--error-paragraph-size);
   color: var(--primary-paragraph-color);
-  padding: 1.6rem;
+  padding: 1.6rem 3.2rem;
   line-height: 1.5;
   background-color: var(--success-bg);
   box-shadow: var(--success-border);
