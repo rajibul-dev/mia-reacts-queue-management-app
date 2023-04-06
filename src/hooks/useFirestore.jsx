@@ -1,6 +1,13 @@
-import { useState } from "react"
-import { db } from "../firebase/config"
-import { collection, addDoc, doc, setDoc, deleteDoc } from "firebase/firestore";
+import { useState } from "react";
+import { db } from "../firebase/config";
+import {
+  collection,
+  addDoc,
+  doc,
+  setDoc,
+  deleteDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 export const useFirestore = (col) => {
   const [error, setError] = useState(null);
@@ -9,10 +16,13 @@ export const useFirestore = (col) => {
   const addDocument = async (data) => {
     setIsPending(true);
     try {
-      await addDoc(collection(db, col), data);
+      await addDoc(collection(db, col), {
+        ...data,
+        createdAt: serverTimestamp(),
+      });
     } catch (err) {
       console.error(err);
-      setError('Could not add the document');
+      setError("Could not add the document");
     } finally {
       setIsPending(false);
     }
@@ -25,7 +35,7 @@ export const useFirestore = (col) => {
       await setDoc(docRef, data, { merge: true });
     } catch (err) {
       console.error(err);
-      setError('Could not update the document');
+      setError("Could not update the document");
     } finally {
       setIsPending(false);
     }
@@ -38,7 +48,7 @@ export const useFirestore = (col) => {
       await deleteDoc(docRef);
     } catch (err) {
       console.error(err);
-      setError('Could not delete the document');
+      setError("Could not delete the document");
     } finally {
       setIsPending(false);
     }
