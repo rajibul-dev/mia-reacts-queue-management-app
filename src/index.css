@@ -51,6 +51,7 @@ body {
   --video-link-btn-color: rgb(255, 255, 255, 0.16);
   --video-link-btn-color-hover: rgb(255, 255, 255, 0.1);
   --settings-secondary-line-color: rgb(255, 255, 255, 0.7);
+  --settings-secondary-line-color-non-rgba: #cacacf;
   --navbar-line-color: rgb(255, 255, 255, 0.5);
 
   --select-menu-color: #707180;

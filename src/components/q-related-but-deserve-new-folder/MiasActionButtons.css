@@ -1,0 +1,48 @@
+.MiasActionButtons {
+  display: flex;
+  gap: 4rem;
+  justify-content: space-between;
+  margin-bottom: 4.4rem;
+}
+.btn-with-text-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.btn-with-text-flex button {
+  font-size: var(--primary-paragraph-size);
+  padding: 0 2rem;
+  height: 6.7rem;
+  color: var(--accessability-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.btn-with-text-flex button:hover {
+  box-shadow: var(--btn-hover-small-border);
+}
+.btn-with-text-flex p {
+  text-align: center;
+  font-size: var(--smaller-paragraph-size);
+  color: var(--settings-secondary-line-color);
+  line-height: 1.6;
+}
+.play-n-grab {
+}
+.move-n-del {
+}
+.play-n-grab button {
+  background-color: var(--signature-color);
+}
+.move-n-del button {
+  background-color: var(--password-cancel-btn-color);
+}
+.play-icon {
+}
+@media (max-width: 38.375em) {
+  .MiasActionButtons {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

@@ -46,7 +46,7 @@ export default function ManageQueue() {
             <h1>Manage Queue List</h1>
             {error && <p>{error}</p>}
             {isPending && <QIsPending />}
-            {/* {!isPending && queueList.length !== 0 && <MiasActionButtons queues={queueList} />} */}
+            {!isPending && queueList.length !== 0 && <MiasActionButtons queues={queueList} />}
             {queueList && queueList.length !== 0 && !isPending ? (
               <QueueListManage queues={queueList} isPending={isPending} />
             ) : null}
