@@ -4,9 +4,19 @@ import { useAddDocumentWithCustomID } from "../../hooks/useAddDocumentWithCustom
 
 import "./UserJoinQ.css";
 
+// components
+import CustomToast from "../CustomToast";
+
 export default function UserJoinQ({ queues, document, user }) {
   const [videoLink, setVideoLink] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+
+  const handleToastClose = () => {
+    setError(null);
+    setSuccess(null);
+  };
 
   const {
     addDocument: addQListDocument,
@@ -34,6 +44,7 @@ export default function UserJoinQ({ queues, document, user }) {
     statAddQListDocument(user.uid, {
       canJoin: false,
     });
+    setSuccess("Successfully added you to the queue!");
   };
 
   const handleLeave = () => {
@@ -46,6 +57,7 @@ export default function UserJoinQ({ queues, document, user }) {
         canJoin: true,
       });
     });
+    setSuccess("Successfully removed you from the queue");
   };
 
   const handleEditing = () => {
@@ -73,60 +85,81 @@ export default function UserJoinQ({ queues, document, user }) {
       }
     });
     setIsEditing(false);
+    setSuccess("Successfully updated your link!");
   };
 
   return (
-    <section className="UserJoinQ QAddManually">
-      {document && document.canJoin && !isEditing && (
-        <form className="add-manually-form" onSubmit={handleSubmit}>
-          <input
-            className="video-link"
-            type="url"
-            placeholder="Paste the video link here"
-            onChange={(e) => setVideoLink(e.target.value)}
-            value={videoLink}
-            disabled={qListIsPending}
-            required
-          />
+    <>
+      <section className="UserJoinQ QAddManually">
+        {document && document.canJoin && !isEditing && (
+          <form className="add-manually-form" onSubmit={handleSubmit}>
+            <input
+              className="video-link"
+              type="url"
+              placeholder="Paste the video link here"
+              onChange={(e) => setVideoLink(e.target.value)}
+              value={videoLink}
+              disabled={qListIsPending}
+              required
+            />
 
-          <button type="submit">Join the queue</button>
-          {qListAdderr && <p className="error">{qListAdderr}</p>}
-        </form>
-      )}
-      {document && !document.canJoin && !isEditing && (
-        <div className="add-manually-form user-action-btns">
-          <button className="leave-q" onClick={handleLeave}>
-            Leave queue
-          </button>
-          <button className="edit-q" onClick={handleEditing}>
-            Edit requested link
-          </button>
-        </div>
-      )}
-      {isEditing && (
-        <form
-          className="add-manually-form userEdit"
-          onSubmit={handleEditSubmit}
-        >
-          <input
-            className="video-link"
-            type="url"
-            placeholder="Paste the video link here"
-            onChange={(e) => setVideoLink(e.target.value)}
-            value={videoLink}
-            disabled={qListIsPending}
-            required
-          />
-
-          <div className="two-btn-flex">
-            <button className="cancel" onClick={handleEditCancel}>
-              Cancel
+            <button type="submit">Join the queue</button>
+            {qListAdderr && <p className="error">{qListAdderr}</p>}
+          </form>
+        )}
+        {document && !document.canJoin && !isEditing && (
+          <div className="add-manually-form user-action-btns">
+            <button className="leave-q" onClick={handleLeave}>
+              Leave queue
             </button>
-            <button type="submit">Save changes</button>
+            <button className="edit-q" onClick={handleEditing}>
+              Edit requested link
+            </button>
           </div>
-          {qListAdderr && <p className="error">{qListAdderr}</p>}
-        </form>
+        )}
+        {isEditing && (
+          <form
+            className="add-manually-form userEdit"
+            onSubmit={handleEditSubmit}
+          >
+            <input
+              className="video-link"
+              type="url"
+              placeholder="Paste the video link here"
+              onChange={(e) => setVideoLink(e.target.value)}
+              value={videoLink}
+              disabled={qListIsPending}
+              required
+            />
+
+            <div className="two-btn-flex">
+              <button className="cancel" onClick={handleEditCancel}>
+                Cancel
+              </button>
+              <button type="submit">Save changes</button>
+            </div>
+            {qListAdderr && <p className="error">{qListAdderr}</p>}
+          </form>
+        )}
+      </section>
+      {error && (
+        <CustomToast
+          message={error}
+          type="error"
+          duration={5000}
+          onClose={handleToastClose}
+          margin="err-margin-2"
+        />
       )}
-    </section>
+      {success && (
+        <CustomToast
+          message={success}
+          type="success"
+          duration={5000000}
+          onClose={handleToastClose}
+          margin="err-margin-2"
+        />
+      )}
+    </>
   );
 }

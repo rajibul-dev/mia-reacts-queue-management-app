@@ -37,3 +37,8 @@
     margin-top: 5rem;
   }
 }
+.error.err-margin-2,
+.success.err-margin-2 {
+  margin-top: -1.2rem;
+  margin-bottom: 3.6rem;
+}
