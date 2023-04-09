@@ -155,7 +155,7 @@ export default function UserJoinQ({ queues, document, user }) {
         <CustomToast
           message={success}
           type="success"
-          duration={5000000}
+          duration={5000}
           onClose={handleToastClose}
           margin="err-margin-2"
         />
