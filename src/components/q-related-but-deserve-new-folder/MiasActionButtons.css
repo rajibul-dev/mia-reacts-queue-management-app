@@ -5,9 +5,11 @@
   margin-bottom: 5.4rem;
 }
 .error.err-margin {
+  margin-top: -1.6rem;
   margin-bottom: 3.6rem;
 }
 .success.err-margin {
+  margin-top: -1.6rem;
   margin-bottom: 3.6rem;
 }
 .btn-with-text-flex {
