@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useAddDocumentWithCustomID } from "../../hooks/useAddDocumentWithCustomID";
-import { useAuthContext } from "../../hooks/useAuthContext";
-import { useDocument } from "../../hooks/useDocument";
 
 import "./UserJoinQ.css";
 
-export default function UserJoinQ({ queues }) {
+export default function UserJoinQ({ queues, document, user }) {
   const [videoLink, setVideoLink] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const { user } = useAuthContext();
 
   const {
     addDocument: addQListDocument,
@@ -24,8 +21,6 @@ export default function UserJoinQ({ queues }) {
     isPending: statQListIsPending,
     updateDocument,
   } = useAddDocumentWithCustomID("QJoinStatus");
-
-  const { document, error, isPending } = useDocument("QJoinStatus", user.uid);
 
   const handleSubmit = (e) => {
     e.preventDefault();

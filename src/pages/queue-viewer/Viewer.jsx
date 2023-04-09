@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
+import { useDocument } from "../../hooks/useDocument";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 // components
 import Navbar from "../../components/Navbar";
@@ -15,6 +17,14 @@ import "./Viewer.css";
 export default function Viewer() {
   const { documents, error, isPending } = useCollection("queueList");
   const [queueList, setQueueList] = useState([]);
+
+  const { user } = useAuthContext();
+
+  const {
+    document,
+    error: statusErr,
+    isPending: statusPending,
+  } = useDocument("QJoinStatus", user.uid);
 
   useEffect(() => {
     if (documents) {
@@ -32,11 +42,19 @@ export default function Viewer() {
           <h1>Mia Reacts Queue List</h1>
           {error && <p>{error}</p>}
           {isPending && <QIsPending />}
-          {!isPending && <UserJoinQ queues={queueList} />}
-          {queueList && queueList.length !== 0 && !isPending ? (
+          {!isPending && (
+            <UserJoinQ queues={queueList} document={document} user={user} />
+          )}
+          {queueList &&
+          queueList.length !== 0 &&
+          !isPending &&
+          !statusPending ? (
             <QueueListView queues={queueList} />
           ) : null}
-          {queueList && queueList.length === 0 && !isPending ? (
+          {queueList &&
+          queueList.length === 0 &&
+          !isPending &&
+          !statusPending ? (
             <EmptyQueue />
           ) : null}
         </div>
