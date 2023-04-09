@@ -1,30 +1,32 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useSignup } from "../../hooks/useSignup";
 
 // styles
-import './Signup.css'
-import VisibilityOnIcon from '../../icons/visibility.svg';
-import VisibilityOffIcon from '../../icons/visibility-off.svg';
+import "./Signup.css";
+import VisibilityOnIcon from "../../icons/visibility.svg";
+import VisibilityOffIcon from "../../icons/visibility-off.svg";
 
 export default function Signup() {
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confPass, setConfPass] = useState("")
+  const [confPass, setConfPass] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { signup, error, isPending } = useSignup()
+  const { signup, error, isPending } = useSignup();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password === confPass) {
-      signup(email, password, name)
+      signup(email, password, name);
     } else {
-      setErrorMessage('Please enter the password correctly in conform password field')
+      setErrorMessage(
+        "Please enter the password correctly in conform password field",
+      );
     }
-  }
+  };
 
   const toggleShowPassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -40,7 +42,7 @@ export default function Signup() {
         <form onSubmit={handleSubmit}>
           <input
             className="not-password-input"
-            type='text'
+            type="text"
             name="name"
             placeholder="Name"
             value={name}
@@ -50,7 +52,7 @@ export default function Signup() {
           />
           <input
             className="not-password-input"
-            type='email'
+            type="email"
             name="email"
             placeholder="Email"
             value={email}
@@ -66,7 +68,7 @@ export default function Signup() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <img 
+            <img
               className="eye-btn"
               src={showPassword ? VisibilityOnIcon : VisibilityOffIcon}
               alt={showPassword ? "visibility on" : "visibility off"}
@@ -75,9 +77,9 @@ export default function Signup() {
           </div>
           <input
             className="not-password-input conform-password"
-            type='password'
-            name="conform-password"
-            placeholder="Conform password"
+            type="password"
+            name="confirm-password"
+            placeholder="Confirm password"
             value={confPass}
             onChange={(e) => setConfPass(e.target.value)}
             required
@@ -87,18 +89,19 @@ export default function Signup() {
           {error && <p className="error">{error}</p>}
 
           <div className="two-btn">
-            <button 
-              className="submit-btn"
-              type="submit"
-              disabled={isPending}
-            >
-              {isPending ? 'Loading...' : 'Create account'}
+            <button className="submit-btn" type="submit" disabled={isPending}>
+              {isPending ? "Loading..." : "Create account"}
             </button>
           </div>
 
-          <p className="p-under-btn">Already have an account? <Link to='/login' className="forgot-password a-under-btn">Login here</Link></p>
+          <p className="p-under-btn">
+            Already have an account?{" "}
+            <Link to="/login" className="forgot-password a-under-btn">
+              Login here
+            </Link>
+          </p>
         </form>
       </div>
     </div>
-  )
+  );
 }
