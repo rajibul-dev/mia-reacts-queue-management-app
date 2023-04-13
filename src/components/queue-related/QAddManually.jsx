@@ -46,7 +46,7 @@ export default function QAddManually({ queues }) {
           required
         />
 
-        <button type="submit" disabled={isPending}>
+        <button className="flex-grow" type="submit" disabled={isPending}>
           Add to list
         </button>
         {error && <p className="error">{error}</p>}

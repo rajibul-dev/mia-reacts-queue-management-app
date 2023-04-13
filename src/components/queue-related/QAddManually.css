@@ -38,11 +38,15 @@
   padding-right: 4rem;
   font-weight: 500;
 }
+.flex-grow {
+  flex-grow: 1;
+}
+
 .video-link {
   width: 44rem;
 }
 .user {
-  width: 20rem;
+  width: 26rem;
 }
 @media (max-width: 54.125em) {
   .add-manually-form {
