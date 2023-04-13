@@ -8,7 +8,7 @@ import "./Root.css";
 export default function Root() {
   return (
     <>
-      <Navbar />
+      <Navbar onRoot={true} />
 
       <div className="Root">
         <h1>What do you want to do?</h1>

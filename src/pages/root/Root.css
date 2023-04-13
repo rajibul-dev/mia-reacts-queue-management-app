@@ -5,8 +5,8 @@
   justify-content: center;
   align-items: center;
   background-color: var(--initial-bg-color);
-  height: 100vh;
-  padding-bottom: 8vh; /* Adjust this value as needed */
+  height: 100dvh;
+  padding-bottom: 3dvh; /* Adjust this value as needed */
   padding-left: 4%;
   padding-right: 4%;
   position: fixed;
@@ -16,12 +16,15 @@
   right: 0;
   overflow: auto;
 }
-@media (max-height: 20em) {
+@media (max-height: 30em) {
   .Root {
     overflow-y: auto;
-    height: auto;
-    padding-top: 4rem;
-    padding-bottom: 4.8rem;
+    padding-top: 40% !important;
+    padding-bottom: 50% !important;
+    position: relative;
+  }
+  .navroot {
+    background-color: var(--initial-bg-color);
   }
 }
 .Root h1 {
@@ -39,8 +42,8 @@
   background-color: var(--initial-btn-color);
   font-size: var(--primary-paragraph-size);
   line-height: 1.5;
-  max-width: 32rem;
-  padding: 1.6rem 2rem;
+  max-width: 33rem;
+  padding: 1.6rem 2.8rem;
   color: var(--primary-paragraph-color);
   border-radius: 4px;
 }
@@ -65,5 +68,8 @@
     font-size: 3.2rem;
     line-height: 1.4;
     margin-bottom: 3.6rem;
+  }
+  .Root {
+    padding-top: 10%;
   }
 }
