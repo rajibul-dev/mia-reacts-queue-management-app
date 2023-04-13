@@ -19,13 +19,8 @@ export default function ResetSession({ queues }) {
     error: readErr,
     isPending: readPending,
   } = useCollection("QJoinStatus");
-  const {
-    documents: qListDocs,
-    error: qListDocsErr,
-    isPending: qListDocsPending,
-  } = useCollection("queueList");
 
-  const resetSessionKeep = (e) => {
+  const resetSessionKeep = async (e) => {
     e.preventDefault();
     if (documents) {
       documents.forEach((doc) => {
@@ -33,18 +28,17 @@ export default function ResetSession({ queues }) {
       });
     }
   };
-  const resetSessionNotKeep = (e) => {
+  const resetSessionNotKeep = async (e) => {
     e.preventDefault();
     if (documents) {
       documents.forEach((doc) => {
         updateDocument(doc.id, { canJoin: true });
       });
     }
-    if (qListDocs) {
-      qListDocs.forEach((doc) => {
-        qListDel(doc.id);
-      });
-    }
+    if (!queues) return;
+    queues.forEach((doc) => {
+      qListDel(doc.id);
+    });
   };
 
   return (
