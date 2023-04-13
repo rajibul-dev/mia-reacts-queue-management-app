@@ -36,7 +36,9 @@ export default function QAddManually({ queues }) {
   return (
     <>
       <section
-        className={`QAddManually${queues.length === 0 ? " more-margin" : ""}`}
+        className={`QAddManually manage${
+          queues.length === 0 ? " more-margin" : ""
+        }`}
       >
         <h2>Add to queue list manually</h2>
         <form onSubmit={handleSubmit} className="add-manually-form">
