@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useFirestore } from "../../hooks/useFirestore";
 
 // styles
@@ -12,6 +12,7 @@ export default function QAddManually({ queues }) {
   const [user, setUser] = useState("");
   const [manualErr, setManualError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const inputRef = useRef(null);
 
   const { addDocument, error, isPending } = useFirestore("queueList");
 
@@ -30,7 +31,12 @@ export default function QAddManually({ queues }) {
     });
     setVideoLink("");
     setUser("");
-    setSuccess(`Successfully added ${user} to the list!`);
+    setSuccess(
+      <>
+        Successfully added <strong>{user}</strong> to the list!
+      </>,
+    );
+    inputRef.current.focus();
   };
 
   return (
@@ -49,6 +55,7 @@ export default function QAddManually({ queues }) {
             onChange={(e) => setUser(e.target.value)}
             value={user}
             required
+            ref={inputRef}
           />
 
           <input
