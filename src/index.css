@@ -169,3 +169,6 @@ select:-webkit-autofill:focus {
 button[disabled] {
   cursor: not-allowed !important;
 }
+button[disabled]:hover {
+  box-shadow: none !important;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useAddDocumentWithCustomID } from "../../hooks/useAddDocumentWithCustomID";
 
@@ -12,6 +12,7 @@ export default function UserJoinQ({ queues, document, user, statusErr }) {
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [disableBtn, setDisableBtn] = useState(false);
 
   const handleToastClose = () => {
     setError(null);
@@ -39,6 +40,7 @@ export default function UserJoinQ({ queues, document, user, statusErr }) {
   } = useFirestore("queueList");
   const {
     addDocument: statAddQListDocument,
+    updateDocument: statUpdateDoc,
     error: statQListAdderr,
     isPending: statQListIsPending,
     updateDocument,
@@ -67,6 +69,7 @@ export default function UserJoinQ({ queues, document, user, statusErr }) {
         delQListDoc(q.id);
       }
       statAddQListDocument(user.uid, {
+        name: user.displayName,
         canJoin: true,
       });
     });
@@ -101,6 +104,14 @@ export default function UserJoinQ({ queues, document, user, statusErr }) {
     setSuccess("Successfully updated your link!");
   };
 
+  useEffect(() => {
+    if (queues.length === 0) {
+      return setDisableBtn(true);
+    }
+    const watched = queues.some((q) => q.uid === user.uid);
+    setDisableBtn(!watched);
+  }, [queues, user]);
+
   return (
     <>
       <section className="UserJoinQ QAddManually">
@@ -120,12 +131,20 @@ export default function UserJoinQ({ queues, document, user, statusErr }) {
             {qListAdderr && <p className="error">{qListAdderr}</p>}
           </form>
         )}
-        {shouldShowAlreadyJoined() && !isEditing && (
+        {shouldShowAlreadyJoined() && !isEditing && !disableBtn && (
           <div className="add-manually-form user-action-btns">
-            <button className="leave-q" onClick={handleLeave}>
+            <button
+              disabled={disableBtn}
+              className="leave-q"
+              onClick={handleLeave}
+            >
               Leave queue
             </button>
-            <button className="edit-q" onClick={handleEditing}>
+            <button
+              disabled={disableBtn}
+              className="edit-q"
+              onClick={handleEditing}
+            >
               Edit requested link
             </button>
           </div>
