@@ -78,6 +78,8 @@ body {
   --already-account-color: rgb(255, 255, 255, 0.7);
   --input-placeholder-color: rgb(255, 255, 255, 0.6);
 
+  --scrollbar-bg-color: rgba(51, 51, 51, 0.2);
+
   --primary-paragraph-size: 2rem;
   --error-paragraph-size: 1.8rem;
   --bigger-paragraph-size: 2.4rem;
@@ -172,3 +174,25 @@ button[disabled] {
 button[disabled]:hover {
   box-shadow: none !important;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  width: 100%;
+  background: rgba(51, 51, 51, 0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--signature-color);
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: var(--btn-pink-new-hover-state);
+} */
