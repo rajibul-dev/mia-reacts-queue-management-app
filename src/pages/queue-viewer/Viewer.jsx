@@ -43,7 +43,12 @@ export default function Viewer() {
           {error && <p>{error}</p>}
           {isPending && <QIsPending />}
           {!isPending && (
-            <UserJoinQ queues={queueList} document={document} user={user} />
+            <UserJoinQ
+              queues={queueList}
+              document={document}
+              statusErr={statusErr}
+              user={user}
+            />
           )}
           {queueList &&
           queueList.length !== 0 &&

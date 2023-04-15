@@ -7,7 +7,7 @@ import "./UserJoinQ.css";
 // components
 import CustomToast from "../CustomToast";
 
-export default function UserJoinQ({ queues, document, user }) {
+export default function UserJoinQ({ queues, document, user, statusErr }) {
   const [videoLink, setVideoLink] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState(null);
@@ -16,6 +16,18 @@ export default function UserJoinQ({ queues, document, user }) {
   const handleToastClose = () => {
     setError(null);
     setSuccess(null);
+  };
+
+  const shouldShowCanJoin = () => {
+    if (!document) return true;
+    else if (document && document.canJoin) return true;
+    else return false;
+  };
+
+  const shouldShowAlreadyJoined = () => {
+    if (!document) return false;
+    else if (document && !document.canJoin) return true;
+    else return false;
   };
 
   const {
@@ -43,6 +55,7 @@ export default function UserJoinQ({ queues, document, user }) {
     });
     statAddQListDocument(user.uid, {
       canJoin: false,
+      name: user.displayName,
     });
     setSuccess("Successfully added you to the queue!");
   };
@@ -91,7 +104,7 @@ export default function UserJoinQ({ queues, document, user }) {
   return (
     <>
       <section className="UserJoinQ QAddManually">
-        {document && document.canJoin && !isEditing && (
+        {shouldShowCanJoin() && !isEditing && (
           <form className="add-manually-form" onSubmit={handleSubmit}>
             <input
               className="video-link"
@@ -107,7 +120,7 @@ export default function UserJoinQ({ queues, document, user }) {
             {qListAdderr && <p className="error">{qListAdderr}</p>}
           </form>
         )}
-        {document && !document.canJoin && !isEditing && (
+        {shouldShowAlreadyJoined() && !isEditing && (
           <div className="add-manually-form user-action-btns">
             <button className="leave-q" onClick={handleLeave}>
               Leave queue
