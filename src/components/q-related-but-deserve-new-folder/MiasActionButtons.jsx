@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useCollection } from "../../hooks/useCollection";
 
-const channelName = "miavocalcoach";
+const channelName = "miavoiceteacher";
 
 // styles
 import "./MiasActionButtons.css";
