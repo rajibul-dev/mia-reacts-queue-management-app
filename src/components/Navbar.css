@@ -20,6 +20,7 @@
   display: flex;
   align-items: center;
   background: none;
+  gap: 1rem;
   height: 100%;
   color: var(--signature-color-light);
 }
@@ -39,23 +40,31 @@
   display: flex;
   transform: translateY(-1%);
 }
-.Navbar ul a {
+.welcome-message {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   font-size: var(--smaller-paragraph-size);
-  color: var(--signature-color-light);
+  color: var(--accessability-white);
 }
 @media (max-width: 44.25em) {
   .Navbar button {
     transform: translateX(-7%);
   }
 }
-.welcome-message {
+.logo {
   display: flex;
-  align-items: center;
   height: 100%;
-  font-size: var(--smaller-paragraph-size);
-  color: var(--primary-paragraph-color);
+  width: 15rem;
+}
+.logo-other-pages {
+  width: 15rem;
+}
+.account-options {
+  display: flex;
+  cursor: pointer;
+}
+.profile-dropdown {
+  width: 5rem;
 }

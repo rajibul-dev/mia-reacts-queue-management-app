@@ -5,7 +5,13 @@ import { useLogout } from "../hooks/useLogout";
 
 // styles
 import "./Navbar.css";
+
+// icons
 import BackBtn from "../icons/back-btn.svg";
+import DropDown from "../icons/drop-down.svg"
+
+// logo
+import Logo from "../assets/logo.svg"
 
 export default function Navbar({ onRoot = false }) {
   const location = useLocation();
@@ -31,24 +37,25 @@ export default function Navbar({ onRoot = false }) {
                 src={BackBtn}
                 alt="left arrow / back button"
               />
-              <span></span>
+              <img src={Logo} alt="Mia twitch softwares logo" className="logo logo-other-pages" />
             </button>
           </Link>
         ) : (
-          <span className="welcome-message">
-            {user && `Welcome, ${user.displayName}`}
-          </span>
+          <img src={Logo} alt="Mia twitch softwares logo" className="logo" />
         )}
 
         <ul>
           {pathname === "/" && (
             <>
-              <li>
-                {user ? (
-                  <Link onClick={handleLogout}>Log out</Link>
-                ) : (
-                  <Link to="/login">Login</Link>
-                )}
+              <li className="account-options">
+                <span className="welcome-message">
+                  Welcome, {user.displayName}
+                </span>
+                <img
+                  src={DropDown}
+                  alt="dropdown icon"
+                  className="profile-dropdown"
+                />
               </li>
             </>
           )}
