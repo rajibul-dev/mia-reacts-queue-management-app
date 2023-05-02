@@ -8,10 +8,10 @@ import "./Navbar.css";
 
 // icons
 import BackBtn from "../icons/back-btn.svg";
-import DropDown from "../icons/drop-down.svg"
+import DropDown from "../icons/drop-down.svg";
 
 // logo
-import Logo from "../assets/logo.svg"
+import Logo from "../assets/logo.svg";
 
 export default function Navbar({ onRoot = false }) {
   const location = useLocation();
@@ -37,7 +37,11 @@ export default function Navbar({ onRoot = false }) {
                 src={BackBtn}
                 alt="left arrow / back button"
               />
-              <img src={Logo} alt="Mia twitch softwares logo" className="logo logo-other-pages" />
+              <img
+                src={Logo}
+                alt="Mia twitch softwares logo"
+                className="logo logo-other-pages"
+              />
             </button>
           </Link>
         ) : (
@@ -63,6 +67,7 @@ export default function Navbar({ onRoot = false }) {
             <>
               <li>
                 <Link
+                  className="nav-link"
                   to="/verify"
                   state={{ route: "/manage-queue", cancelRoute: "/viewer" }}
                 >
@@ -74,7 +79,9 @@ export default function Navbar({ onRoot = false }) {
           {pathname === "/manage-queue" && (
             <>
               <li>
-                <Link to="/viewer">Go to view mode</Link>
+                <Link className="nav-link" to="/viewer">
+                  Go to view mode
+                </Link>
               </li>
             </>
           )}

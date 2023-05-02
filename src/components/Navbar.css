@@ -64,7 +64,16 @@
 .account-options {
   display: flex;
   cursor: pointer;
+  padding-left: 3rem;
 }
 .profile-dropdown {
   width: 5rem;
+}
+.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: var(--smaller-paragraph-size);
+  color: var(--signature-color-light);
 }
