@@ -31,7 +31,7 @@ body {
 
 :root {
   --initial-bg-color: #343541;
-  --initial-btn-color: #4f505f;
+  --initial-btn-color: #454754;
 
   --password-cancel-btn-color: #7e7f8f;
   --input-bg-on-queue-pages: #65677a;
@@ -41,6 +41,7 @@ body {
   --primary-heading-color: #fff;
   --primary-paragraph-color: #eee;
   --accessability-white: #fff;
+  --init-btn-dec-color: rgb(255, 255, 255, 0.8);
 
   --signature-color: #6066a8;
   --signature-color-light: #e7e9ff;
@@ -86,10 +87,15 @@ body {
   --medium-paragraph-size: 2.2rem;
   --smaller-paragraph-size: 1.8rem;
   --smallest-paragraph-size: 1.6rem;
-  --h1-size: 4rem;
+  --h1-size: 3.6rem;
   --h2-size: 3.4rem;
-  --sectiono-h2: 3rem;
+  --section-h2: 3rem;
   --bigr-h1: 4.8rem;
+  --init-btn-h2-size: 2.8rem;
+
+  --default-bor-rad: 6px;
+
+  --navbar-width: 96rem;
 
   /* TODO: LINE HEIGHT VARIABLES */
 }
@@ -177,7 +183,8 @@ button[disabled]:hover {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 1rem;
+  width: 0.7rem;
+  height: 0.7rem;
 }
 
 /* Track */
