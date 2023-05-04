@@ -2,6 +2,9 @@
   border-bottom: 1px solid var(--navbar-line-color);
   height: 6.9rem;
 }
+.Navbar.navroot {
+  background-color: var(--initial-bg-color);
+}
 .sm-container.nav-container {
   padding: 0;
   display: flex;
