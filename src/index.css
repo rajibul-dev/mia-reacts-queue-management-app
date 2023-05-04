@@ -32,6 +32,7 @@ body {
 :root {
   --initial-bg-color: #343541;
   --initial-btn-color: #454754;
+  --menu-bg-color: #292a33;
 
   --password-cancel-btn-color: #7e7f8f;
   --input-bg-on-queue-pages: #65677a;
