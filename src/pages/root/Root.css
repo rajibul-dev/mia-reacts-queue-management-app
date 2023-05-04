@@ -2,13 +2,11 @@
   z-index: -1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-top: 15rem;
+  align-items: start;
   background-color: var(--initial-bg-color);
   height: 100dvh;
   padding-bottom: 3dvh; /* Adjust this value as needed */
-  padding-left: 4%;
-  padding-right: 4%;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -16,11 +14,11 @@
   right: 0;
   overflow: auto;
 }
-@media (max-height: 30em) {
+@media (max-height: 25em) {
   .Root {
     overflow-y: auto;
-    padding-top: 40% !important;
-    padding-bottom: 50% !important;
+    padding-top: 6% !important;
+    padding-bottom: 20% !important;
     position: relative;
   }
   .navroot {
@@ -29,47 +27,43 @@
 }
 .Root h1 {
   font-size: var(--h1-size);
-  font-weight: 400;
-  margin-bottom: 4.4rem;
-  text-align: center;
+  font-weight: 700;
+  margin-bottom: 5.8rem;
 }
 .btn-flex-initial {
   display: flex;
-  align-items: center;
   gap: 3rem;
-}
-.Root button {
-  background-color: var(--initial-btn-color);
-  font-size: var(--primary-paragraph-size);
-  line-height: 1.5;
-  max-width: 33rem;
-  padding: 1.6rem 2.8rem;
-  color: var(--primary-paragraph-color);
-  border-radius: 4px;
-}
-.Root button:hover {
-  box-shadow: var(--btn-hover-big-border);
 }
 
 /* media quiries */
-@media (max-width: 32em) {
-  .btn-flex-initial {
-    gap: 2rem;
+@media (max-width: 29.5em) {
+  .Root h1 {
+    font-size: 3.1rem;
+    line-height: 1.4;
+    margin-bottom: 4.8rem;
   }
-  .Root button {
-    max-width: 36rem;
+  .Root {
+    padding-top: 13rem;
   }
 }
-@media (max-width: 29.5em) {
+.root-container {
+  width: 96rem;
+  max-width: 96rem;
+  margin-inline: auto;
+}
+@media (max-width: 54.125em) {
+  .root-container {
+    width: auto;
+    max-width: 90rem;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+@media (max-width: 30.375em) {
   .btn-flex-initial {
     flex-direction: column;
   }
-  .Root h1 {
-    font-size: 3.2rem;
-    line-height: 1.4;
-    margin-bottom: 3.6rem;
-  }
   .Root {
-    padding-top: 10%;
+    padding-bottom: 8rem;
   }
 }
