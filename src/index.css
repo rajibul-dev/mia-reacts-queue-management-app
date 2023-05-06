@@ -181,7 +181,13 @@ button[disabled] {
 button[disabled]:hover {
   box-shadow: none !important;
 }
-
+.disabled {
+  opacity: 0.8;
+  cursor: not-allowed !important;
+}
+.disabled:hover {
+  box-shadow: none !important;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 0.7rem;
