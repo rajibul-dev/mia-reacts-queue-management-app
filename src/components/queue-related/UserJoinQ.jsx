@@ -13,7 +13,6 @@ export default function UserJoinQ({ queues, document, user, statusErr }) {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [disableBtn, setDisableBtn] = useState(false);
-  console.log(document);
 
   const handleToastClose = () => {
     setError(null);

@@ -1,0 +1,14 @@
+.copyBtn {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 2.8rem;
+  font-size: var(--smaller-paragraph-size);
+  color: var(--accessability-white);
+  background-color: var(--password-cancel-btn-color);
+  padding: 1rem 3rem;
+}
+.copyBtn img {
+  width: 2.4rem;
+}

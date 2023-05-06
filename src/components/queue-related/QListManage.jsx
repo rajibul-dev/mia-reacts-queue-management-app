@@ -7,6 +7,7 @@ import "./QListManage.css";
 
 // components
 import QueueEditForm from "./QEditForm";
+import CopyBtn from "./CopyBtn";
 
 // icons
 import DragIndicatorIcon from "../../icons/draggable-indicator.svg";
@@ -70,74 +71,77 @@ export default function QueueListManage({ queues, isPending }) {
   };
 
   return (
-    <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId="queues" direction="vertical">
-        {(provided, snapshot) => (
-          <ol
-            className={`queue-list-in-both QueueListManage${
-              snapshot.isDraggingOver ? " dragging" : ""
-            }`}
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
-            {queues.map((queue, index) => (
-              <Draggable
-                key={queue.id}
-                draggableId={queue.id}
-                index={index}
-                type="QUEUE_ITEM"
-              >
-                {(provided) => (
-                  <li
-                    key={queue.id}
-                    className={
-                      editingQueues.includes(queue.id) ? "editing" : null
-                    }
-                    {...provided.draggableProps}
-                    ref={provided.innerRef}
-                  >
-                    {editingQueues.includes(queue.id) ? null : (
-                      <button className="drag-btn">
-                        <img
-                          className="drag-icon"
-                          src={DragIndicatorIcon}
-                          alt="drag icon / drag button / 6-dots button"
-                        />
-                      </button>
-                    )}
-
-                    <h2 {...provided.dragHandleProps}>{queue.onNumber}</h2>
-
-                    {editingQueues.includes(queue.id) ? (
-                      <QueueEditForm
-                        queue={queue}
-                        queues={queues}
-                        onClose={() => handleFormClose(queue.id)}
-                      />
-                    ) : (
-                      <>
-                        <div className="flex-name-n-btn">
-                          <p>{queue.name}</p>
-                          <a href={queue.videoLink} target="_blank"></a>
-                        </div>
-                        <button className="edit-btn">
+    <>
+      <CopyBtn queues={queues} />
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="queues" direction="vertical">
+          {(provided, snapshot) => (
+            <ol
+              className={`queue-list-in-both QueueListManage${
+                snapshot.isDraggingOver ? " dragging" : ""
+              }`}
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {queues.map((queue, index) => (
+                <Draggable
+                  key={queue.id}
+                  draggableId={queue.id}
+                  index={index}
+                  type="QUEUE_ITEM"
+                >
+                  {(provided) => (
+                    <li
+                      key={queue.id}
+                      className={
+                        editingQueues.includes(queue.id) ? "editing" : null
+                      }
+                      {...provided.draggableProps}
+                      ref={provided.innerRef}
+                    >
+                      {editingQueues.includes(queue.id) ? null : (
+                        <button className="drag-btn">
                           <img
-                            className="edit-icon"
-                            src={EditIcon}
-                            alt="edit button / icon"
-                            onClick={() => handleEditBtnClick(queue.id)}
+                            className="drag-icon"
+                            src={DragIndicatorIcon}
+                            alt="drag icon / drag button / 6-dots button"
                           />
                         </button>
-                      </>
-                    )}
-                  </li>
-                )}
-              </Draggable>
-            ))}
-            {provided.placeholder}
-          </ol>
-        )}
-      </Droppable>
-    </DragDropContext>
+                      )}
+
+                      <h2 {...provided.dragHandleProps}>{queue.onNumber}</h2>
+
+                      {editingQueues.includes(queue.id) ? (
+                        <QueueEditForm
+                          queue={queue}
+                          queues={queues}
+                          onClose={() => handleFormClose(queue.id)}
+                        />
+                      ) : (
+                        <>
+                          <div className="flex-name-n-btn">
+                            <p>{queue.name}</p>
+                            <a href={queue.videoLink} target="_blank"></a>
+                          </div>
+                          <button className="edit-btn">
+                            <img
+                              className="edit-icon"
+                              src={EditIcon}
+                              alt="edit button / icon"
+                              onClick={() => handleEditBtnClick(queue.id)}
+                            />
+                          </button>
+                        </>
+                      )}
+                    </li>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </ol>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </>
   );
 }
