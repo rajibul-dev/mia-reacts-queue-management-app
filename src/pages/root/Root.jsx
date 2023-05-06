@@ -1,6 +1,9 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 
+const adminPassword = process.env.INAPP_ADMIN_PASSWORD;
+const isAdmin = localStorage.getItem(adminPassword) === "true";
+
 // components
 import BtnComponent from "./BtnComponent";
 
@@ -19,7 +22,7 @@ export default function Root() {
             <BtnComponent
               title="Queue"
               desc="Request Mia to react on a song, and view the queue list"
-              route="/viewer"
+              route={isAdmin ? "/manage-queue" : "/viewer"}
             />
             <BtnComponent
               title="Reaction videos"
