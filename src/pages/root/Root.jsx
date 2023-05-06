@@ -24,6 +24,7 @@ export default function Root() {
             <BtnComponent
               title="Reaction videos"
               desc="Watch from the library of Mia’s twitch stream reactions."
+              disabled={true}
             />
           </div>
         </div>

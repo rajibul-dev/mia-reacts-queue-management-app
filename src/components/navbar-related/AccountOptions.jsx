@@ -45,7 +45,7 @@ export default function AccountOptions({ user, logoutFunction }) {
       {isMenuOptionsVisible && (
         <div className="menuOptions" ref={dropdownRef}>
           <ul>
-            <li>
+            <li className="disabled">
               <img className="profile-icon" src={ProfileIcon} alt="profile icon, person icon" />
               <span>Profile</span>
             </li>
