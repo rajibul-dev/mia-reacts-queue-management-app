@@ -1,0 +1,19 @@
+.spinner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  place-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--initial-bg-color);
+  padding-top: -8vh;
+}
+.spinner p {
+  margin-left: 0.6rem;
+  font-size: var(--primary-paragraph-size);
+}
+@media (max-width: 30em) {
+  .spinner {
+    padding-top: -15vh;
+  }
+}

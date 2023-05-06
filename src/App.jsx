@@ -8,6 +8,7 @@ import Signup from "./pages/signup/Signup";
 import Login from "./pages/login/Login";
 import ForgotPassword from "./pages/forgot-password/ForgotPassword";
 import ResetPassword from "./pages/reset-password/ResetPassword";
+import Spinner from "./components/Spinner";
 import { useAuthContext } from "./hooks/useAuthContext";
 const dotenv = require("dotenv");
 dotenv.config();
@@ -26,6 +27,7 @@ export default function App() {
 
   return (
     <>
+      {!authIsReady && <Spinner />}
       {authIsReady && (
         <BrowserRouter>
           <Routes>
