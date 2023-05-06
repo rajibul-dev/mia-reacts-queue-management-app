@@ -8,10 +8,12 @@ import "./Navbar.css";
 
 // icons
 import BackBtn from "../icons/back-btn.svg";
-import DropDown from "../icons/drop-down.svg";
 
 // logo
 import Logo from "../assets/logo.svg";
+
+// components
+import AccountOptions from "./navbar-related/AccountOptions";
 
 export default function Navbar({ onRoot = false }) {
   const location = useLocation();
@@ -51,16 +53,7 @@ export default function Navbar({ onRoot = false }) {
         <ul>
           {pathname === "/" && (
             <>
-              <li className="account-options">
-                <span className="welcome-message">
-                  Welcome, {user.displayName}
-                </span>
-                <img
-                  src={DropDown}
-                  alt="dropdown icon"
-                  className="profile-dropdown"
-                />
-              </li>
+              <AccountOptions user={user} logoutFunction={logout} />
             </>
           )}
           {pathname === "/viewer" && (
